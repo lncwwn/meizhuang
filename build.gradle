@@ -14,6 +14,8 @@ repositories {
 
 ext {
     springVersion = '4.1.6.RELEASE'
+    mysqlDriverVersion = '5.1.1'
+    servletVersion = '3.1.0'
 }
 
 dependencies {
@@ -23,11 +25,13 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-web', version: springVersion
     compile group: 'org.springframework', name: 'spring-webmvc', version: springVersion
     compile group: 'org.springframework', name: 'spring-aop', version: springVersion
-    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+    compile group: 'org.springframework', name: 'spring-jdbc', version: springVersion
+    compile group: 'org.springframework', name: 'spring-tx', version: springVersion
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: servletVersion
+    compile group: 'mysql', name: 'mysql-connector-java', version: mysqlDriverVersion
+    compile group: 'org.apache.commons', name: 'commons-pool2', version: '2.1'
+    compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.1'
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2.1'
+    compile group: 'commons-dbutils', name: 'commons-dbutils', version: '1.6'
     testCompile group: 'junit', name: 'junit', version: '4.11'
-}
-
-task demo << {
-    print(ext)
-    print(extensions)
 }
