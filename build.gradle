@@ -1,0 +1,33 @@
+group 'com.lncwwn'
+version '1.0.0'
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'idea'
+apply plugin: 'jetty'
+
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    springVersion = '4.1.6.RELEASE'
+}
+
+dependencies {
+    compile group: 'org.springframework', name: 'spring-core', version: springVersion
+    compile group: 'org.springframework', name: 'spring-context', version: springVersion
+    compile group: 'org.springframework', name: 'spring-beans', version: springVersion
+    compile group: 'org.springframework', name: 'spring-web', version: springVersion
+    compile group: 'org.springframework', name: 'spring-webmvc', version: springVersion
+    compile group: 'org.springframework', name: 'spring-aop', version: springVersion
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+task demo << {
+    print(ext)
+    print(extensions)
+}
