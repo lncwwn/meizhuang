@@ -1,0 +1,38 @@
+.min-height {
+    height: 45px;
+    min-height: 45px;
+}
+
+.nav>li>a:hover,
+.nav>li>a:focus {
+  text-decoration: underline;
+  background-color: #474d57;
+}
+
+.navbar-header>a,
+.navbar-nav>li>a {
+    height: 45px;
+    margin-top: -1px;
+    color: #fff;
+    line-height: 15px;
+}
+
+.navbar-collapse {
+    border-top: 0;
+}
+
+.customize-navbar {
+    margin: 0 -15px;
+    color: #fff;
+    border-radius: 0;
+    background-color: #474d57;
+}
+
+.form-area {
+    max-width: 326px;
+    margin: 100px auto 0;
+}
+
+.form-area>input {
+    margin: 5px 0;
+}
