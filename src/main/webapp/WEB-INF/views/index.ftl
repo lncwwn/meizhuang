@@ -1,4 +1,3 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +11,7 @@
 <body>
     <div class="container-fluid">
         <div class="header">
-            <div class="navbar min-height customize-navbar" role="navigation">
+            <div class="navbar min-height mz-navbar" role="navigation">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="/">美桩网</a>
