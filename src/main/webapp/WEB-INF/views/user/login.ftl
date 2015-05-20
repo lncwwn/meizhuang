@@ -12,7 +12,7 @@
     <div class="container-fluid">
         <#include "/common/header.ftl" />
         <div class="main">
-            <form class="form-area" action="${base}/user/signup/" method="post">
+            <form class="form-area" action="${base}/user/register/" method="post">
                 <h3>用户登录</h3>
                 <input type="text" class="form-control" name="name" placeholder="用户名" autofocus="true">
                 <input type="password" class="form-control" name="password" placeholder="密码">
@@ -21,7 +21,7 @@
                         <input type="checkbox" name="remember"> 记住我
                     </label>
                 </div>
-                <button class="btn btn-default btn-primary btn-block" type="submit"> 登录</button>
+                <button class="btn btn-default btn-primary btn-block"> 登录</button>
                 <div class="form-bottom">
                     <a href="${base}/user/register">注册帐号</a> 或者 <a href="${base}/user/change_password">修改密码</a>
                 </div>
@@ -29,3 +29,4 @@
         </div>
     </div>
 </body>
+</html>

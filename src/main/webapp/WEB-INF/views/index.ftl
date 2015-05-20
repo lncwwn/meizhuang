@@ -15,7 +15,5 @@
         </div>
     </div>
 </body>
-<script>
-    var base = "${base}";
-</script>
+<script type="text/javascript" data-main="${base}/static/js/main" src="${base}/static/js/lib/require.js"></script>
 </html>
