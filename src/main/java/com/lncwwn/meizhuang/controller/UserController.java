@@ -1,5 +1,7 @@
 package com.lncwwn.meizhuang.controller;
 
+import com.lncwwn.meizhuang.service.impl.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,7 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/user")
 public class UserController {
 
-    @RequestMapping("/login")
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
     public ModelAndView index() {
         return new ModelAndView("user/login");
     }

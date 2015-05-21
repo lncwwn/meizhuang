@@ -17,5 +17,8 @@
         <property name="username" value="root"/>
         <property name="password" value="lncwwn"/>
     </bean>
+    <bean id="queryRunner" class="org.apache.commons.dbutils.QueryRunner">
+        <constructor-arg ref="dataSource"></constructor-arg>
+    </bean>
 
 </beans>
