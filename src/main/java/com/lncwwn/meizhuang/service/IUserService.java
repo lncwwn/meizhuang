@@ -23,4 +23,6 @@ public interface IUserService {
 
     List<User> getUsers();
 
+    boolean create(User user);
+
 }

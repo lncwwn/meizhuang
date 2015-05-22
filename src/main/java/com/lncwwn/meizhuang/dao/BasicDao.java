@@ -1,11 +1,13 @@
 package com.lncwwn.meizhuang.dao;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.sql.DataSource;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -24,16 +26,6 @@ public class BasicDao<T> {
     private QueryRunner queryRunner;
 
     /**
-     * find bean from database
-     * @param clazz
-     * @param sql
-     * @throws SQLException
-     */
-    public T find(Class<T> clazz, String sql) throws SQLException {
-        return queryRunner.query(sql, new BeanHandler<T>(clazz));
-    }
-
-    /**
      * find bean from database with query condition
      * @param clazz
      * @param sql
@@ -46,16 +38,6 @@ public class BasicDao<T> {
     }
 
     /**
-     * find all beans from database
-     * @param clazz
-     * @param sql
-     * @throws SQLException
-     */
-    public List<T> findAll(Class<T> clazz, String sql) throws SQLException {
-        return queryRunner.query(sql, new BeanListHandler<T>(clazz));
-    }
-
-    /**
      * find all beans from database with query condition
      * @param clazz
      * @param sql
@@ -64,7 +46,46 @@ public class BasicDao<T> {
      * @throws SQLException
      */
     public List<T> findAll(Class<T> clazz, String sql, Object... params) throws SQLException {
-        return queryRunner.query(sql, new BeanListHandler<T>(clazz));
+        return queryRunner.query(sql, new BeanListHandler<T>(clazz), params);
+    }
+
+    /**
+     * single insert
+     * @param clazz
+     * @param sql
+     * @return
+     * @throws SQLException
+     */
+    public int insert(Class<T> clazz, String sql, Object... params) throws SQLException {
+        queryRunner.insert(sql, new ResultSetHandler<T>() {
+            @Override
+            public T handle(ResultSet rs) throws SQLException {
+                System.out.println(rs.getInt(0));
+                return null;
+            }
+        }, params);
+
+        return 0;
+    }
+
+    /**
+     * batch insert
+     * @param clazz
+     * @param sql
+     * @param params
+     * @return
+     * @throws SQLException
+     */
+    public int batchInsert(Class<T> clazz, String sql, Object[]... params) throws SQLException {
+        queryRunner.insertBatch(sql, new ResultSetHandler<T>() {
+            @Override
+            public T handle(ResultSet rs) throws SQLException {
+                System.out.println(rs.getInt(0));
+                return null;
+            }
+        }, params);
+
+        return 0;
     }
 
 }

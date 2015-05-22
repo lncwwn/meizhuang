@@ -64,6 +64,8 @@ public class UserFacade implements IUserFacade {
             if (null != u) {
                 return false;
             }
+
+            return userService.create(user);
         }
 
         return false;

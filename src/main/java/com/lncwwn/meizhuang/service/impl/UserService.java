@@ -3,14 +3,16 @@ package com.lncwwn.meizhuang.service.impl;
 import com.lncwwn.meizhuang.dao.UserDao;
 import com.lncwwn.meizhuang.pojo.User;
 import com.lncwwn.meizhuang.service.IUserService;
+import com.lncwwn.meizhuang.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 /**
- * Created with idea community version.
+ * implemented <code>IUserService</code> interface
  *
  * @author victor.li
  * @date 5/21/15
@@ -82,5 +84,24 @@ public class UserService implements IUserService {
         }
 
         return null;
+    }
+
+    @Override
+    public boolean create(User user) {
+        String now = DateUtil.format(new Date(), "yyyyMMdd HH:mm:ss");
+        String sql = "insert into tb_user (name, nick, email, phone, password, joined) values (?, ?, ?, ?, ?, ?)";
+        String name = user.getName();
+        String nick = user.getNick();
+        String email = user.getEmail();
+        String phone = user.getPhone();
+        String password = user.getPassword();
+        try {
+            userDao.insert(User.class, sql, name, nick, email, phone, password, now);
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 }
