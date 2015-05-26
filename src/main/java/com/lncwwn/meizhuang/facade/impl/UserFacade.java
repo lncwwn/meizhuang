@@ -48,8 +48,14 @@ public class UserFacade implements IUserFacade {
             String password = user.getPassword();
             if (null == nick || nick.isEmpty()) return false;
             if (null == email || email.isEmpty() || !StringUtil.isEmail(email)) return false;
-            if (null != password && !(password.isEmpty()) &&
-                    password.length() > 6 && password.length() < 18) return false;
+            if (null == password || password.isEmpty()) {
+                return false;
+            } else {
+                if (password.length() < 6 || password.length() > 18) {
+                    return false;
+                }
+            }
+
             return true;
         }
 

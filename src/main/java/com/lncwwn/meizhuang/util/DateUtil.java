@@ -16,6 +16,15 @@ public class DateUtil {
     private static SimpleDateFormat sdf = new SimpleDateFormat();
 
     /**
+     * gets now
+     * @return
+     */
+    public static String now() {
+        Date date = new Date();
+        return format(date, "yyyyMMdd HH:mm:ss");
+    }
+
+    /**
      * format date
      * @param date
      * @param fmt

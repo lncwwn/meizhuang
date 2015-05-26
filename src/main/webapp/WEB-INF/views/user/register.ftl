@@ -14,7 +14,7 @@
         <div class="main">
             <form class="form-area">
                 <h3>用户注册</h3>
-                <input type="text" class="form-control" name="name" placeholder="用户名" autofocus="true">
+                <input type="text" class="form-control" name="nick" placeholder="用户名" autofocus="true">
                 <input type="password" class="form-control" name="password" placeholder="密码">
                 <input type="password" class="form-control" name="password_confirm" placeholder="再次输入密码">
                 <input type="text" class="form-control" name="email" placeholder="邮箱帐号">
