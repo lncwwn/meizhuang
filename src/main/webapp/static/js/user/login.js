@@ -31,7 +31,14 @@ define(['jquery'], function($) {
     function login(params) {
         var url = base + '/user/login';
         $.post(url, 'params=' + JSON.stringify(params), function(data) {
-            console.log(data);
+            if (data) {
+                data = JSON.parse(data);
+                if (data.code === 1) {
+                    location.href = base + '/';
+                } else {
+                    alert('login failed');
+                }
+            }
         });
     }
 
