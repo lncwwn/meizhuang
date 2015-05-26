@@ -15,7 +15,7 @@ public interface IUserFacade {
      * @param user
      * @return
      */
-    boolean login(User user);
+    User login(User user);
 
     /**
      * user register

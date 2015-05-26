@@ -34,11 +34,15 @@ public class UserService implements IUserService {
         return null;
     }
 
-    @Override
-    public User getByParam(String... param) {
-        String sql = "select * from tb_user where ? = ?";
+    /**
+     * get user by nick
+     * @param nick
+     * @return
+     */
+    public User getByNick(String nick) {
+        String sql = "select * from tb_user where nick = ?";
         try {
-            return userDao.find(User.class, sql, param);
+            return userDao.find(User.class, sql, nick);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -47,30 +51,19 @@ public class UserService implements IUserService {
     }
 
     /**
-     * get user by name
-     * @param name
-     * @return
-     */
-    public User getByName(String name) {
-        return this.getByParam("name", name);
-    }
-
-    /**
-     * get user by nick
-     * @param nick
-     * @return
-     */
-    public User getByNick(String nick) {
-        return this.getByParam("nick", nick);
-    }
-
-    /**
      * get user by email
      * @param email
      * @return
      */
     public User getByEmail(String email) {
-        return this.getByParam("email", email);
+        String sql = "select * from tb_user where email = ?";
+        try {
+            return userDao.find(User.class, sql, email);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     @Override

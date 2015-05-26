@@ -21,18 +21,18 @@ public class UserFacade implements IUserFacade {
 
 
     @Override
-    public boolean login(User user) {
+    public User login(User user) {
         String nick = user.getNick();
         if (null == nick || nick.isEmpty())
-            return false;
+            return null;
         User u = userService.getByNick(nick);
         if (null != u) {
             if (u.getPassword().equals(user.getPassword())) {
-                return true;
+                return u;
             }
         }
 
-        return false;
+        return null;
     }
 
     /**

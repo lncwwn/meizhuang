@@ -9,6 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.servlet.mvc.condition.RequestConditionHolder;
+import sun.security.krb5.internal.PAData;
 
 /**
  * define user api
@@ -35,19 +39,39 @@ public class UserApi extends BasicApi {
         }
         JSONObject p = JSON.parseObject(params);
         String nick = p.getString("nick");
-//        String name = p.getString("name");
         String password = p.getString("password");
         String email = p.getString("email");
         User user = new User();
         user.setNick(nick);
         user.setPassword(password);
-//        user.setName(name);
         user.setEmail(email);
         if (userFacade.register(user)) {
+            RequestContextHolder.getRequestAttributes()
+                    .setAttribute(nick, user, RequestAttributes.SCOPE_GLOBAL_SESSION);
             return handler(1, "success", true);
         }
 
         return handler(2, "error", false);
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @ResponseBody
+    public String login(String params) {
+        if (null == params) {
+            return handler(1, "error", null);
+        }
+        JSONObject p = JSON.parseObject(params);
+        String nick = p.getString("nick");
+        String password = p.getString("password");
+        User user = new User();
+        user.setNick(nick);
+        user.setPassword(password);
+        User find = userFacade.login(user);
+        if (null != find) {
+            return handler(1, "login success", find);
+        }
+
+        return handler(2, "error", null);
     }
 
 }

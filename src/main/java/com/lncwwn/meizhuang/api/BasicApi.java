@@ -1,7 +1,9 @@
 package com.lncwwn.meizhuang.api;
 
 import com.alibaba.fastjson.JSON;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +14,9 @@ import java.util.Map;
  * @date 5/20/15
  */
 public class BasicApi {
+
+    @Autowired
+    protected HttpServletRequest request;
 
     protected String handler(int code, String msg, Object data) {
         Map<String, Object> obj = new HashMap<String, Object>();

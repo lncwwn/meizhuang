@@ -14,13 +14,6 @@ public interface IUserService {
 
     User getById(long id);
 
-    /**
-     * find user by string type param
-     * @param param
-     * @return
-     */
-    User getByParam(String... param);
-
     List<User> getUsers();
 
     boolean create(User user);
