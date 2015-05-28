@@ -28,7 +28,9 @@
             </form>
         </div>
     </div>
+    <#include "/common/common.ftl" />
 </body>
 <script type="text/javascript" data-main="${base}/static/js/main" src="${base}/static/js/lib/require.js"></script>
 <script data-module="login"></script>
+<script data-module="bootstrap"></script>
 </html>

@@ -36,3 +36,10 @@
 .form-area>input {
     margin: 5px 0;
 }
+
+.notice-panel {
+    width: 360px;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 999;
+}
