@@ -63,7 +63,7 @@ public class UserApi extends BasicApi {
         User find = userFacade.login(user);
         if (null != find) {
             // put current user in session
-            setLoginUser(nick, user);
+            setLoginUser(nick, find);
             return handler(1, "login success", find);
         }
 

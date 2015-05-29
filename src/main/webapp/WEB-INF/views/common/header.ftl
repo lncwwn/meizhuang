@@ -12,7 +12,11 @@
                     <li><a href="javascript:;">我的艺术馆</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="${base}/user/login/"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 登录</a></li>
+                    <#if (!currentUser)>
+                        <li><a href="${base}/user/login/"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 登录</a></li>
+                    <#else>
+                        <li><a href="${base}/user/login/"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> ${currentUser.nick}</a></li>
+                    </#if>
                 </ul>
             </div>
         </div>
