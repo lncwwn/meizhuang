@@ -1,15 +1,12 @@
 package com.lncwwn.meizhuang.dao;
 
 import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.sql.DataSource;
-import java.security.acl.LastOwnerException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -63,22 +60,13 @@ public class BasicDao<T> {
 
     /**
      * batch insert
-     * @param clazz
      * @param sql
      * @param params
      * @return
      * @throws SQLException
      */
-    public int batchInsert(Class<T> clazz, String sql, Object[]... params) throws SQLException {
-        queryRunner.insertBatch(sql, new ResultSetHandler<T>() {
-            @Override
-            public T handle(ResultSet rs) throws SQLException {
-                System.out.println(rs.getInt(0));
-                return null;
-            }
-        }, params);
-
-        return 0;
+    public Integer batchInsert(String sql, Object[]... params) throws SQLException {
+        return queryRunner.insertBatch(sql, new ScalarHandler<>(1), params);
     }
 
 }
