@@ -66,7 +66,7 @@ public class BasicDao<T> {
      * @throws SQLException
      */
     public Integer batchInsert(String sql, Object[]... params) throws SQLException {
-        return queryRunner.insertBatch(sql, new ScalarHandler<>(1), params);
+        return queryRunner.insertBatch(sql, new ScalarHandler<Integer>(1), params);
     }
 
 }

@@ -16,7 +16,7 @@ public class DateUtil {
     private static SimpleDateFormat sdf = new SimpleDateFormat();
 
     /**
-     * gets now
+     * get now
      * @return
      */
     public static String now() {

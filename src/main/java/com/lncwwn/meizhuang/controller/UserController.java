@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * Created with idea community version.
+ * User controller.
  *
  * @author victor.li
  * @date 5/19/15

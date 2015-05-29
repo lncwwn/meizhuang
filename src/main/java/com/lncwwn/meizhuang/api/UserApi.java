@@ -9,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.RequestAttributes;
-import org.springframework.web.context.request.RequestContextHolder;
 
 /**
  * define user api
@@ -64,8 +62,8 @@ public class UserApi extends BasicApi {
         user.setPassword(password);
         User find = userFacade.login(user);
         if (null != find) {
-            RequestContextHolder.getRequestAttributes()
-                    .setAttribute(nick, user, RequestAttributes.SCOPE_GLOBAL_SESSION);
+            // put current user in session
+            setLoginUser(nick, user);
             return handler(1, "login success", find);
         }
 

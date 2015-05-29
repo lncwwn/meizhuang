@@ -1,20 +1,16 @@
-package com.lncwwn.meizhuang.api;
+package com.lncwwn.meizhuang.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.lncwwn.meizhuang.pojo.User;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
- * Api基类
+ * Basic controller
  *
  * @author victor.li
- * @date 5/20/15
+ * @date 5/29/15
  */
-public class BasicApi {
+public class BasicController {
 
     protected User getLoginUser(String nick) {
         User user = (User) RequestContextHolder.getRequestAttributes()
@@ -25,15 +21,6 @@ public class BasicApi {
     protected void setLoginUser(String nick, User user) {
         RequestContextHolder.getRequestAttributes()
                 .setAttribute(nick, user, RequestAttributes.SCOPE_GLOBAL_SESSION);
-    }
-
-    protected String handler(int code, String msg, Object data) {
-        Map<String, Object> obj = new HashMap<>();
-        obj.put("code", code);
-        obj.put("msg", msg);
-        obj.put("data", data);
-
-        return JSON.toJSONString(obj);
     }
 
 }
