@@ -13,9 +13,10 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <#if (!currentUser)>
-                        <li><a href="${base}/user/login/"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 登录</a></li>
+                        <li><a href="${base}/user/login/"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> 登录</a></li>
                     <#else>
                         <li><a href="${base}/user/login/"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> ${currentUser.nick}</a></li>
+                        <li><a href="${base}/user/login/"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 退出</a></li>
                     </#if>
                 </ul>
             </div>
