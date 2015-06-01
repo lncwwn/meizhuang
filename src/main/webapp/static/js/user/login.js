@@ -3,7 +3,7 @@
  * @author victor li
  * @date 2015/05/26
  */
-define(['jquery'], function($) {
+define(['jquery', 'common'], function($, common) {
 
     function collectParams() {
         var params = {};
@@ -36,7 +36,7 @@ define(['jquery'], function($) {
                 if (data.code === 1) {
                     location.href = base + '/';
                 } else {
-                    alert('login failed');
+                    common.warn(data.msg);
                 }
             }
         });
