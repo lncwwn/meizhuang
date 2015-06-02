@@ -4,7 +4,8 @@ require.config({
         'jquery': 'lib/jquery',
         'bootstrap': 'lib/bootstrap',
         'register': 'user/register',
-        'login': 'user/login'
+        'login': 'user/login',
+        'profile': 'user/profile'
     },
     shim: {
         'bootstrap': ['jquery']

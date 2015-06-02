@@ -3,6 +3,7 @@ package com.lncwwn.meizhuang.controller;
 import com.lncwwn.meizhuang.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @date 2015/05/19
  */
 @Controller
+@SessionAttributes("currentUser")
 public class IndexController extends BasicController {
 
     @RequestMapping({"/", "/index"})
