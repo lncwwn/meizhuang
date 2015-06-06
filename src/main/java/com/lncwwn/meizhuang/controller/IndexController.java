@@ -20,7 +20,8 @@ public class IndexController extends BasicController {
     public ModelAndView index() {
         ModelAndView mv = new ModelAndView();
         User user = getLoginUser("victor");
-        mv.addObject("currentUser", user);
+        if (null != user)
+            mv.addObject("currentUser", user);
 
         mv.setViewName("index");
 
