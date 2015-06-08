@@ -37,6 +37,12 @@ public class UserController extends BasicController{
         return new ModelAndView("user/register");
     }
 
+    @RequestMapping(value = "/logout/{nick}", method = RequestMethod.GET)
+    public ModelAndView logout(@PathVariable String nick) {
+        removeLoginUser(nick);
+        return new ModelAndView("redirect:/");
+    }
+
     /**
      * user's profile page
      * @param id

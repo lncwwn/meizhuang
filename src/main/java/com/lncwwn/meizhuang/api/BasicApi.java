@@ -27,6 +27,11 @@ public class BasicApi {
                 .setAttribute(nick, user, RequestAttributes.SCOPE_GLOBAL_SESSION);
     }
 
+    protected void removeLoginUser(String nick) {
+        RequestContextHolder.getRequestAttributes()
+                .removeAttribute(nick, RequestAttributes.SCOPE_GLOBAL_SESSION);
+    }
+
     protected String handler(int code, String msg, Object data) {
         Map<String, Object> obj = new HashMap<>();
         obj.put("code", code);

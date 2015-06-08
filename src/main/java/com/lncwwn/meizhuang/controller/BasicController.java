@@ -23,4 +23,9 @@ public class BasicController {
                 .setAttribute(nick, user, RequestAttributes.SCOPE_GLOBAL_SESSION);
     }
 
+    protected void removeLoginUser(String nick) {
+        RequestContextHolder.getRequestAttributes()
+                .removeAttribute(nick, RequestAttributes.SCOPE_GLOBAL_SESSION);
+    }
+
 }
