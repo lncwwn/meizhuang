@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 /**
  * define user api
  *
@@ -50,7 +54,7 @@ public class UserApi extends BasicApi {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public String login(String params) {
+    public String login(HttpSession session, HttpServletResponse response, String params) {
         if (null == params) {
             return handler(1, "error", null);
         }
@@ -62,8 +66,9 @@ public class UserApi extends BasicApi {
         user.setPassword(password);
         User find = userFacade.login(user);
         if (null != find) {
-            // put current user in session
-            setLoginUser(nick, find);
+            session.setAttribute(nick, find);
+            Cookie cookie = new Cookie("MEIZHUANG", "nick=" + nick);
+            response.addCookie(cookie);
             return handler(1, "login success", find);
         }
 

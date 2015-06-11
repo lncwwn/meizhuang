@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * User controller.
  *
@@ -38,8 +40,10 @@ public class UserController extends BasicController{
     }
 
     @RequestMapping(value = "/logout/{nick}", method = RequestMethod.GET)
-    public ModelAndView logout(@PathVariable String nick) {
-        removeLoginUser(nick);
+    public ModelAndView logout(HttpSession session, @PathVariable String nick) {
+//        removeLoginUser(nick);
+        session.removeAttribute(nick);
+        session.invalidate();
         return new ModelAndView("redirect:/");
     }
 

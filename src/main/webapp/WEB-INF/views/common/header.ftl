@@ -13,11 +13,11 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <#if (!Session["currentUser"]?exists)>
-                        <li><a href="${base}/user/login/"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> 登录</a></li>
+                        <li><a href="${base}/user/login/">登录</a></li>
                     <#else>
                     <#assign user = Session["currentUser"]>
-                        <li><a href="${base}/user/${Session["currentUser"].id}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> ${Session["currentUser"].nick}</a></li>
-                        <li><a href="${base}/user/logout/${Session["currentUser"].nick}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> 退出</a></li>
+                        <li><a href="${base}/user/${Session["currentUser"].id}">${Session["currentUser"].nick}</a></li>
+                        <li><a href="${base}/user/logout/${Session["currentUser"].nick}">退出</a></li>
                     </#if>
                 </ul>
             </div>
