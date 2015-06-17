@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -18,9 +17,8 @@ import javax.servlet.http.HttpSession;
  * @date 5/19/15
  */
 @Controller
-@SessionAttributes("currentUser")
 @RequestMapping("/user")
-public class UserController extends BasicController{
+public class UserController extends BasicController {
 
     @Autowired
     private UserService userService;
@@ -41,9 +39,9 @@ public class UserController extends BasicController{
 
     @RequestMapping(value = "/logout/{nick}", method = RequestMethod.GET)
     public ModelAndView logout(HttpSession session, @PathVariable String nick) {
-//        removeLoginUser(nick);
         session.removeAttribute(nick);
         session.invalidate();
+        System.out.println(session.getId());
         return new ModelAndView("redirect:/");
     }
 

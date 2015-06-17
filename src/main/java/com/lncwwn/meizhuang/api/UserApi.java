@@ -67,8 +67,9 @@ public class UserApi extends BasicApi {
         User find = userFacade.login(user);
         if (null != find) {
             session.setAttribute(nick, find);
-            Cookie cookie = new Cookie("MEIZHUANG", "nick=" + nick);
-            response.addCookie(cookie);
+//            Cookie cookie = new Cookie("MEIZHUANG", JSON.toJSONString(find));
+//            cookie.setMaxAge(24 * 60 * 60);
+//            response.addCookie(cookie);
             return handler(1, "login success", find);
         }
 
