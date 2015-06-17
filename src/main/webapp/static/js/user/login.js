@@ -3,8 +3,11 @@
  * @author victor li
  * @date 2015/05/26
  */
-define(['jquery', 'common'], function($, common) {
+define(['jquery', 'bootstrap', 'common'], function($, bootstrap, common) {
 
+    /**
+     * 收集登录表单参数
+     */
     function collectParams() {
         var params = {};
         params.nick = $('input[name="nick"]').val();
@@ -13,6 +16,9 @@ define(['jquery', 'common'], function($, common) {
         return params;
     }
 
+    /**
+     * 验证登录表单参数
+     */
     function verifyParams(params) {
         var verify = {pass: false};
         if (!params.nick) {
@@ -28,6 +34,9 @@ define(['jquery', 'common'], function($, common) {
         return params;
     }
 
+    /**
+     * 提交登录请求
+     */
     function login(params) {
         var url = base + '/user/login';
         $.post(url, 'params=' + JSON.stringify(params), function(data) {
@@ -41,7 +50,7 @@ define(['jquery', 'common'], function($, common) {
             }
         });
     }
-
+$('#js-alert-modal').modal('show');
     $('body').on('click', 'button', function(e) {
         e.preventDefault();
     }).on('click', '.js-user-login-btn', function(e) {
