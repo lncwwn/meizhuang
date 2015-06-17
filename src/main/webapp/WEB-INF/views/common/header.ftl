@@ -12,12 +12,12 @@
                     <li><a href="javascript:;">我的艺术馆</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <#if (!Session["currentUser"]?exists)>
+                    <#if (!Session["user"]?exists)>
                         <li><a href="${base}/user/login/">登录</a></li>
                     <#else>
-                    <#assign user = Session["currentUser"]>
-                        <li><a href="${base}/user/${Session["currentUser"].id}">${Session["currentUser"].nick}</a></li>
-                        <li><a href="${base}/user/logout/${Session["currentUser"].nick}">退出</a></li>
+                    <#assign user = Session["user"]>
+                        <li><a href="${base}/user/${Session["user"].id}">${Session["user"].nick}</a></li>
+                        <li><a href="${base}/user/logout/${Session["user"].nick}">退出</a></li>
                     </#if>
                 </ul>
             </div>
