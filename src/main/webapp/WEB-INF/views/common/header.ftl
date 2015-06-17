@@ -16,7 +16,15 @@
                         <li><a href="${base}/user/login/">登录</a></li>
                     <#else>
                     <#assign user = Session["user"]>
-                        <li><a href="${base}/user/${Session["user"].id}">${Session["user"].nick}</a></li>
+                        <li>
+                            <a href="${base}/user/${Session["user"].id}" title="${Session["user"].nick}">
+                                <#if (Session["user"].nick?length > 5)>
+                                    ${Session["user"].nick?substring(0, 5)}...
+                                <#else>
+                                    ${Session["user"].nick}
+                                </#if>
+                            </a>
+                        </li>
                         <li><a href="${base}/user/logout/${Session["user"].nick}">退出</a></li>
                     </#if>
                 </ul>
