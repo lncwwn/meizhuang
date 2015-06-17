@@ -39,9 +39,7 @@ public class UserController extends BasicController {
 
     @RequestMapping(value = "/logout/{nick}", method = RequestMethod.GET)
     public ModelAndView logout(HttpSession session, @PathVariable String nick) {
-        session.removeAttribute(nick);
         session.invalidate();
-        System.out.println(session.getId());
         return new ModelAndView("redirect:/");
     }
 
