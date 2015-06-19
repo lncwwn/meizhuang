@@ -26,6 +26,6 @@
         </div>
     </div>
 </body>
-<script type="text/javascript" data-main="${base}/static/js/main" src="${base}/static/js/lib/require.js"></script>
-<script data-module="register"></script>
+<script src="${base}/static/build/common.js"></script>
+<script src="${base}/static/build/register.js"></script>
 </html>

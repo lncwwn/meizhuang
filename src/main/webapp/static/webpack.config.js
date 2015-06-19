@@ -12,5 +12,10 @@ module.exports = {
         path: './build/',
         filename: '[name].js'
     },
+    module: {
+        loaders: [
+            {test: /\.js$/, loader: 'jsx-loader?harmony'}
+        ]
+    },
     plugins: [commonsPlugin]
 };

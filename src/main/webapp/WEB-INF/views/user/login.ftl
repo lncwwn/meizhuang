@@ -11,8 +11,8 @@
 <body>
     <div class="container-fluid">
         <#include "/common/header.ftl" />
-        <div class="main">
-            <form class="form-area" action="${base}/user/register/" method="post">
+        <div class="main" id="js-login-form">
+            <!--form class="form-area" action="${base}/user/register/" method="post">
                 <h3>用户登录</h3>
                 <input type="text" class="form-control" name="nick" placeholder="用户名" autofocus="true">
                 <input type="password" class="form-control" name="password" placeholder="密码">
@@ -25,11 +25,11 @@
                 <div class="form-bottom">
                     <a href="${base}/user/register">注册帐号</a> 或者 <a href="${base}/user/change_password">修改密码</a>
                 </div>
-            </form>
+            </form-->
         </div>
     </div>
     <#include "/common/common.ftl" />
 </body>
-<script type="text/javascript" data-main="${base}/static/js/main" src="${base}/static/js/lib/require.js"></script>
-<script data-module="login"></script>
+<script src="${base}/static/build/common.js"></script>
+<script src="${base}/static/build/login.js"></script>
 </html>
