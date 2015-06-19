@@ -1,0 +1,27 @@
+{
+  "name": "meizhuang",
+  "version": "1.0.0",
+  "homepage": "https://github.com/lncwwn/meizhuang",
+  "authors": [
+    "victor <lncwwn@gmail.com>"
+  ],
+  "description": "meizhuang",
+  "main": "index.js",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "meizhuang"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5"
+  }
+}

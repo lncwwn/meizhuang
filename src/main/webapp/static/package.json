@@ -1,0 +1,32 @@
+{
+  "name": "meizhuang",
+  "version": "1.0.0",
+  "description": "meizhuang",
+  "main": "index.js",
+  "dependencies": {
+    "node-libs-browser": "^0.5.2",
+    "webpack": "^1.9.11"
+  },
+  "devDependencies": {
+    "bootstrap": "^3.3.5",
+    "jquery": "^1.11.3",
+    "react": "^0.13.3",
+    "webpack": "^1.9.11"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:lncwwn/meizhuang.git"
+  },
+  "keywords": [
+    "meizhuang"
+  ],
+  "author": "victor li",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lncwwn/meizhuang/issues"
+  },
+  "homepage": "https://github.com/lncwwn/meizhuang"
+}
