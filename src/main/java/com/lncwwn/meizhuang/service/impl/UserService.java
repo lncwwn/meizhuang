@@ -87,8 +87,9 @@ public class UserService implements IUserService {
 //        String phone = user.getPhone();
         String password = user.getPassword();
         try {
-            userDao.insert(sql, nick, email, password, new Date());
-            return true;
+            if (userDao.insert(sql, nick, email, password, new Date()) > 0) {
+                return true;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
