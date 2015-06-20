@@ -11,12 +11,12 @@ require('../common');
 var LoginForm = React.createClass({
     handleSubmit: function(e) {
         e.preventDefault();
-        var name = this.refs.name.getDOMNode().value,
+        var nick = this.refs.nick.getDOMNode().value,
             password = this.refs.password.getDOMNode().value;
 
-        if (!name || !password) return;
+        if (!nick || !password) return;
 
-        params = {name: name, password: password};
+        var params = {nick: nick, password: password};
         $.post(this.props.url, 'params=' + JSON.stringify(params), function(data) {
             if (data) {
                 data = JSON.parse(data);
@@ -32,7 +32,7 @@ var LoginForm = React.createClass({
         return (
             <form className="form-area" url="${base}/user/login" method="post" onSubmit={this.handleSubmit}>
                 <h3>用户登录</h3>
-                <input type="text" className="form-control" ref="name" name="nick" placeholder="用户名" autofocus="true"/>
+                <input type="text" className="form-control" ref="nick" name="nick" placeholder="用户名" autofocus="true"/>
                 <input type="password" className="form-control" ref="password" name="password" placeholder="密码"/>
                 <div className="checkbox">
                     <label>

@@ -15,12 +15,12 @@ webpackJsonp([0],[
 	var LoginForm = React.createClass({displayName: "LoginForm",
 	    handleSubmit: function(e) {
 	        e.preventDefault();
-	        var name = this.refs.name.getDOMNode().value,
+	        var nick = this.refs.nick.getDOMNode().value,
 	            password = this.refs.password.getDOMNode().value;
 
-	        if (!name || !password) return;
+	        if (!nick || !password) return;
 
-	        params = {name: name, password: password};
+	        var params = {nick: nick, password: password};
 	        $.post(this.props.url, 'params=' + JSON.stringify(params), function(data) {
 	            if (data) {
 	                data = JSON.parse(data);
@@ -36,7 +36,7 @@ webpackJsonp([0],[
 	        return (
 	            React.createElement("form", {className: "form-area", url: "${base}/user/login", method: "post", onSubmit: this.handleSubmit}, 
 	                React.createElement("h3", null, "用户登录"), 
-	                React.createElement("input", {type: "text", className: "form-control", ref: "name", name: "nick", placeholder: "用户名", autofocus: "true"}), 
+	                React.createElement("input", {type: "text", className: "form-control", ref: "nick", name: "nick", placeholder: "用户名", autofocus: "true"}), 
 	                React.createElement("input", {type: "password", className: "form-control", ref: "password", name: "password", placeholder: "密码"}), 
 	                React.createElement("div", {className: "checkbox"}, 
 	                    React.createElement("label", null, 
@@ -45,17 +45,9 @@ webpackJsonp([0],[
 	                ), 
 	                React.createElement("button", {className: "btn btn-default btn-primary btn-block js-user-login-btn"}, " 登录"), 
 	                React.createElement("div", {className: "form-bottom"}, 
-	                    React.createElement(RegisterLink, null)
+	                    React.createElement("a", {href: "${base}/user/register"}, "注册帐号"), " 或者 ", React.createElement("a", {href: "${base}/user/change_password"}, "修改密码")
 	                )
 	            )
-	        );
-	    }
-	});
-
-	var RegisterLink = React.createClass({displayName: "RegisterLink",
-	    render: function() {
-	        return (
-	            React.createElement("a", {href: "${base}/user/register"}, "注册帐号")
 	        );
 	    }
 	});

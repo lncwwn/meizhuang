@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "bootstrap": "^3.3.5",
+    "flux": "^2.0.3",
     "jquery": "^1.11.3",
     "react": "^0.13.3",
     "webpack": "^1.9.11"
