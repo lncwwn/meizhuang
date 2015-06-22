@@ -6,7 +6,8 @@ var actions = Reflux.createActions({
     'login': {},
     'logout': {},
     'signup': {},
-    'changePassword': {}
+    'update': {},
+    'showOverlay': {}
 });
 
 module.exports = actions;
