@@ -12,6 +12,8 @@
     "flux": "^2.0.3",
     "jquery": "^1.11.3",
     "react": "^0.13.3",
+    "react-router": "^0.13.3",
+    "reflux": "^0.2.8",
     "webpack": "^1.9.11"
   },
   "scripts": {

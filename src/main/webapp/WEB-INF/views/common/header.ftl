@@ -1,6 +1,3 @@
-<script type="text/javascript">
-    var base = "${base}";
-</script>
 <div class="header">
     <div class="navbar min-height mz-navbar" role="navigation">
         <div class="container-fluid">

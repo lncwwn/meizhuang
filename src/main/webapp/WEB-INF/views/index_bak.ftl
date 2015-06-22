@@ -10,7 +10,9 @@
 </head>
 <body>
     <div class="container-fluid">
-        <div id="app"></div>
+        <#include "/common/header.ftl" />
+        <div class="main">
+        </div>
     </div>
 </body>
 <script type="text/javascript">
