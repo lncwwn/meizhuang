@@ -45,9 +45,7 @@ var WorksOfArt = React.createClass({
                         </div>
                     </div>
                 </div>
-                <div className='main'>
-                    {overlay}
-                </div>
+
             </div>
         );
     }

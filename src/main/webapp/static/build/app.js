@@ -48,10 +48,8 @@ webpackJsonp([0,1],[
 	                            )
 	                        )
 	                    )
-	                ), 
-	                React.createElement("div", {className: "main"}, 
-	                    overlay
 	                )
+
 	            )
 	        );
 	    }
