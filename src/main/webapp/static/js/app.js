@@ -19,7 +19,7 @@ var actions = require('./actions/actions');
 var Works = require('./views/works');
 var Signup = require('./views/signup');
 var Login = require('./views/login');
-var update = require('./views/update');
+var Update = require('./views/update');
 
 var WorksOfArt = React.createClass({
     render: function() {
