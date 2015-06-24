@@ -5,6 +5,8 @@
  * @date 2015/06/22
  */
 
+'use strict';
+
 window.React = require('react');
 window.$ = require('jquery');
 
@@ -15,7 +17,9 @@ var DefaultRoute = ReactRouter.DefaultRoute;
 var Link = ReactRouter.Link;
 var actions = require('./actions/actions');
 var Works = require('./views/works');
-var Login = require('./components/login');
+var Signup = require('./views/signup');
+var Login = require('./views/login');
+var update = require('./views/update');
 
 var WorksOfArt = React.createClass({
     render: function() {
@@ -58,8 +62,8 @@ var WorksOfArt = React.createClass({
 var routes = (
     <Route handler={WorksOfArt}>
         <Route name='login' path='/user/login/' handler={Login}></Route>
-        <Route name='signup' path='/user/signup/' handler={Login}></Route>
-        <Route name='none' path='none' handler={Login}></Route>
+        <Route name='signup' path='/user/signup/' handler={Signup}></Route>
+        <Route name='update' path='/user/update/' handler={Update}></Route>
         <DefaultRoute name='home' handler={Works}></DefaultRoute>
     </Route>
 );

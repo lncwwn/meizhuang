@@ -62,8 +62,8 @@ webpackJsonp([0,1],[
 	var routes = (
 	    React.createElement(Route, {handler: WorksOfArt}, 
 	        React.createElement(Route, {name: "login", path: "/user/login/", handler: Login}), 
-	        React.createElement(Route, {name: "signup", path: "/user/signup/", handler: Login}), 
-	        React.createElement(Route, {name: "none", path: "none", handler: Login}), 
+	        React.createElement(Route, {name: "signup", path: "/user/signup/", handler: Signup}), 
+	        React.createElement(Route, {name: "update", path: "/user/update/", handler: Update}), 
 	        React.createElement(DefaultRoute, {name: "home", handler: Works})
 	    )
 	);
