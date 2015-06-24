@@ -11,8 +11,10 @@ webpackJsonp([0,1],[
 
 	window.React = __webpack_require__(25);
 	window.$ = __webpack_require__(180);
+
 	var ReactRouter = __webpack_require__(181);
 	var Route = ReactRouter.Route;
+	var RouteHandler = ReactRouter.RouteHandler;
 	var DefaultRoute = ReactRouter.DefaultRoute;
 	var Link = ReactRouter.Link;
 	var actions = __webpack_require__(1);
@@ -26,7 +28,7 @@ webpackJsonp([0,1],[
 
 	        var userArea = (
 	            React.createElement("ul", {className: "nav navbar-nav navbar-right"}, 
-	                React.createElement("li", null, React.createElement("a", {href: "javascript:;", onClick: actions.showOverlay.bind(this, 'login')}, "登录"))
+	                React.createElement("li", null, React.createElement(Link, {to: "login"}, "登录"))
 	            )
 	        );
 
@@ -48,8 +50,10 @@ webpackJsonp([0,1],[
 	                            )
 	                        )
 	                    )
+	                ), 
+	                React.createElement("div", {className: "main"}, 
+	                    React.createElement(RouteHandler, null)
 	                )
-
 	            )
 	        );
 	    }
@@ -67,6 +71,7 @@ webpackJsonp([0,1],[
 	ReactRouter.run(routes, function(Handler, state) {
 	    React.render(React.createElement(Handler, {params:  state.params}), document.getElementById('app'));
 	});
+
 
 /***/ },
 /* 1 */

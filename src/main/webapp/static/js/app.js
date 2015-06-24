@@ -7,8 +7,10 @@
 
 window.React = require('react');
 window.$ = require('jquery');
+
 var ReactRouter = require('react-router');
 var Route = ReactRouter.Route;
+var RouteHandler = ReactRouter.RouteHandler;
 var DefaultRoute = ReactRouter.DefaultRoute;
 var Link = ReactRouter.Link;
 var actions = require('./actions/actions');
@@ -22,7 +24,7 @@ var WorksOfArt = React.createClass({
 
         var userArea = (
             <ul className='nav navbar-nav navbar-right'>
-                <li><a href='javascript:;' onClick={actions.showOverlay.bind(this, 'login')}>登录</a></li>
+                <li><Link to='login'>登录</Link></li>
             </ul>
         );
 
@@ -45,7 +47,9 @@ var WorksOfArt = React.createClass({
                         </div>
                     </div>
                 </div>
-
+                <div className='main'>
+                    <RouteHandler/>
+                </div>
             </div>
         );
     }
