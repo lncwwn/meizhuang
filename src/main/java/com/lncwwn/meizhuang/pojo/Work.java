@@ -18,6 +18,10 @@ public class Work implements Serializable {
     private String description;
     // 作品图片链接
     private String address;
+    // 作品可定价
+    private Double price;
+    // 是否售完
+    private boolean sellOut;
     private Date created;
     private Date updated;
 
@@ -59,6 +63,21 @@ public class Work implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public boolean isSellOut() {
+        return sellOut;
+    }
+
+    public void setSellOut(boolean sellOut) {
+        this.sellOut = sellOut;
     }
 
     public Date getCreated() {
