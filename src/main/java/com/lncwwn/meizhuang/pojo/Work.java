@@ -22,6 +22,8 @@ public class Work implements Serializable {
     private Double price;
     // 是否售完
     private boolean sellOut;
+    // 作品所属艺术馆
+    private long gallery;
     private Date created;
     private Date updated;
 
@@ -78,6 +80,14 @@ public class Work implements Serializable {
 
     public void setSellOut(boolean sellOut) {
         this.sellOut = sellOut;
+    }
+
+    public long getGallery() {
+        return gallery;
+    }
+
+    public void setGallery(long gallery) {
+        this.gallery = gallery;
     }
 
     public Date getCreated() {
