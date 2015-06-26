@@ -14,7 +14,7 @@ var defaultUser = {
     isLoggedIn: false
 };
 
-Reflux.createStore({
+var UserStore = Reflux.createStore({
     listenables: actions,
 
     init: function() {
@@ -32,12 +32,16 @@ Reflux.createStore({
         this.user.profile.nick = profile.nick;
         this.user.profile.name = profile.name;
         this.user.profile.email = profile.email;
-        console.log(this.user);
     },
     afterLogout: function() {
         this.user = defaultUser;
     },
     afterUpdate: function() {
         // TODO
+    },
+    getUser: function() {
+        return this.user;
     }
 });
+
+module.exports = UserStore;

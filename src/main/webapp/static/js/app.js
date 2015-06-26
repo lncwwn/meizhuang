@@ -20,10 +20,17 @@ var Works = require('./views/works');
 var Signup = require('./views/signup');
 var Login = require('./views/login');
 var Update = require('./views/update');
+var UserStore = require('./stores/userStore');
 
 var WorksOfArt = React.createClass({
-    render: function() {
 
+    getInitialState: function() {
+        return {
+            user: UserStore.getUser()
+        };
+    },
+    render: function() {
+console.log(this.state.user)
         var overlay = <Login url='/user/login' />;
 
         var userArea = (

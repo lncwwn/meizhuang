@@ -24,7 +24,7 @@ var Login = React.createClass({
         if (!nick || !password) return;
 
         var params = {nick: nick, password: password}
-        $.post(MZ.base + this.props.url, 'params=' + JSON.stringify(params), function(data) {
+        $.post(MZ.base + '/user/login', 'params=' + JSON.stringify(params), function(data) {
             if (data) {
                 data = JSON.parse(data);
                 if (data.code === 1) {

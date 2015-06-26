@@ -24,7 +24,7 @@ var Signup = React.createClass({
             return;
         }
         var params = {nick: nick, password: password, email: email};
-        $.post(MZ.base + this.props.url, 'params=' + JSON.stringify(params), function(data) {
+        $.post(MZ.base + '/user/signup', 'params=' + JSON.stringify(params), function(data) {
             console.log(data);
         });
     },
