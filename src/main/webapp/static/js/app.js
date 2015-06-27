@@ -37,14 +37,13 @@ var WorksOfArt = React.createClass({
         };
     },
     updateUser: function(user) {
-    console.log('-----------');
         this.setState({
             user: user
         });
     },
     render: function() {
 
-        var user = this.state.user;console.log(user.isLoggedIn)
+        var user = this.state.user;
         var overlay = <Login url='/user/login' />;
         var userArea = user.isLoggedIn ? (
             <ul className='nav navbar-nav navbar-right'>

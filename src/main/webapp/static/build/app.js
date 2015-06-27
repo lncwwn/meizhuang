@@ -41,14 +41,13 @@ webpackJsonp([0,1],[
 	        };
 	    },
 	    updateUser: function(user) {
-	    console.log('-----------');
 	        this.setState({
 	            user: user
 	        });
 	    },
 	    render: function() {
 
-	        var user = this.state.user;console.log(user.isLoggedIn)
+	        var user = this.state.user;console.log(user.profile.nick)
 	        var overlay = React.createElement(Login, {url: "/user/login"});
 	        var userArea = user.isLoggedIn ? (
 	            React.createElement("ul", {className: "nav navbar-nav navbar-right"}, 
