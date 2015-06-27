@@ -20,22 +20,30 @@ var Works = require('./views/works');
 var Signup = require('./views/signup');
 var Login = require('./views/login');
 var Update = require('./views/update');
+var Profile = require('./views/profile');
 var UserStore = require('./stores/userStore');
 
 var WorksOfArt = React.createClass({
 
+    mixins: [
+        require('react-router').Navigation
+    ],
     getInitialState: function() {
         return {
             user: UserStore.getUser()
         };
     },
     render: function() {
-console.log(this.state.user)
-        var overlay = <Login url='/user/login' />;
 
-        var userArea = (
+        var user = this.state.user;
+        var overlay = <Login url='/user/login' />;
+        var userArea = user.isLoggedIn ? (
             <ul className='nav navbar-nav navbar-right'>
                 <li><Link to='login'>登录</Link></li>
+            </ul>
+        ) : (
+            <ul className='nav navbar-nav navbar-right'>
+                <li><Link to='profile' params={{id: user.profile.id}}>{user.profile.nick}</Link></li>
             </ul>
         );
 
@@ -71,6 +79,7 @@ var routes = (
         <Route name='login' path='/user/login/' handler={Login}></Route>
         <Route name='signup' path='/user/signup/' handler={Signup}></Route>
         <Route name='update' path='/user/update/' handler={Update}></Route>
+        <Route name='profile' path='/user/profile/:id' handler={Profile}></Route>
         <DefaultRoute name='home' handler={Works}></DefaultRoute>
     </Route>
 );

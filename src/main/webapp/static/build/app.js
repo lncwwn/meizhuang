@@ -24,9 +24,14 @@ webpackJsonp([0,1],[
 	var Signup = __webpack_require__(221);
 	var Login = __webpack_require__(222);
 	var Update = __webpack_require__(224);
+	var Profile = __webpack_require__(225);
 	var UserStore = __webpack_require__(223);
 
 	var WorksOfArt = React.createClass({displayName: "WorksOfArt",
+
+	    mixins: [
+	        __webpack_require__(158).Navigation
+	    ],
 
 	    getInitialState: function() {
 	        return {
@@ -34,12 +39,18 @@ webpackJsonp([0,1],[
 	        };
 	    },
 	    render: function() {
-	console.log(this.state.user)
+
+	        var user = this.state.user;
+
 	        var overlay = React.createElement(Login, {url: "/user/login"});
 
-	        var userArea = (
+	        var userArea = user.isLoggedIn ? (
 	            React.createElement("ul", {className: "nav navbar-nav navbar-right"}, 
 	                React.createElement("li", null, React.createElement(Link, {to: "login"}, "登录"))
+	            )
+	        ) : (
+	            React.createElement("ul", {className: "nav navbar-nav navbar-right"}, 
+	                React.createElement("li", null, React.createElement(Link, {to: "profile", params: {id: user.profile.id}}, user.profile.nick))
 	            )
 	        );
 
@@ -75,6 +86,7 @@ webpackJsonp([0,1],[
 	        React.createElement(Route, {name: "login", path: "/user/login/", handler: Login}), 
 	        React.createElement(Route, {name: "signup", path: "/user/signup/", handler: Signup}), 
 	        React.createElement(Route, {name: "update", path: "/user/update/", handler: Update}), 
+	        React.createElement(Route, {name: "profile", path: "/user/profile/:id", handler: Profile}), 
 	        React.createElement(DefaultRoute, {name: "home", handler: Works})
 	    )
 	);
@@ -35546,6 +35558,9 @@ webpackJsonp([0,1],[
 	var Link = ReactRouter.Link;
 
 	var Login = React.createClass({displayName: "Login",
+	    mixins: [
+	        __webpack_require__(158).Navigation
+	    ],
 	    getInitialState: function() {
 	        return {user: null};
 	    },
@@ -35556,13 +35571,14 @@ webpackJsonp([0,1],[
 
 	        if (!nick || !password) return;
 
-	        var params = {nick: nick, password: password}
+	        var params = {nick: nick, password: password}, self = this;
 	        $.post(MZ.base + '/user/login', 'params=' + JSON.stringify(params), function(data) {
 	            if (data) {
 	                data = JSON.parse(data);
 	                if (data.code === 1) {
 	                    var user = data.data;
 	                    actions.login(user);
+	                    self.transitionTo('home');
 	                } else {
 	                    //common.warn(data.msg);
 	                }
@@ -35678,6 +35694,25 @@ webpackJsonp([0,1],[
 	});
 
 	module.exports = Update;
+
+/***/ },
+/* 225 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Profile = React.createClass({displayName: "Profile",
+
+	    mixins: [
+	        __webpack_require__(158).Navigation
+	    ],
+
+	    render: function() {
+	        return (
+	            React.createElement("h3", null, "profile")
+	        );
+	    }
+	});
+
+	module.exports = Profile;
 
 /***/ }
 ]);

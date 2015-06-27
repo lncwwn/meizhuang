@@ -13,6 +13,9 @@ var ReactRouter = require('react-router');
 var Link = ReactRouter.Link;
 
 var Login = React.createClass({
+    mixins: [
+        require('react-router').Navigation
+    ],
     getInitialState: function() {
         return {user: null};
     },
@@ -23,13 +26,14 @@ var Login = React.createClass({
 
         if (!nick || !password) return;
 
-        var params = {nick: nick, password: password}
+        var params = {nick: nick, password: password}, self = this;
         $.post(MZ.base + '/user/login', 'params=' + JSON.stringify(params), function(data) {
             if (data) {
                 data = JSON.parse(data);
                 if (data.code === 1) {
                     var user = data.data;
                     actions.login(user);
+                    self.transitionTo('home');
                 } else {
                     //common.warn(data.msg);
                 }
