@@ -32,6 +32,7 @@ var UserStore = Reflux.createStore({
         this.user.profile.nick = profile.nick;
         this.user.profile.name = profile.name;
         this.user.profile.email = profile.email;
+        this.trigger(this.user);
     },
     afterLogout: function() {
         this.user = defaultUser;

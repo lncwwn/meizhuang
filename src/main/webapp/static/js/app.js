@@ -10,6 +10,8 @@
 window.React = require('react');
 window.$ = require('jquery');
 
+var Reflux = require('reflux');
+
 var ReactRouter = require('react-router');
 var Route = ReactRouter.Route;
 var RouteHandler = ReactRouter.RouteHandler;
@@ -26,24 +28,35 @@ var UserStore = require('./stores/userStore');
 var WorksOfArt = React.createClass({
 
     mixins: [
-        require('react-router').Navigation
+        require('react-router').Navigation,
+        Reflux.listenTo(UserStore, 'updateUser')
     ],
     getInitialState: function() {
         return {
             user: UserStore.getUser()
         };
     },
+    updateUser: function(user) {
+    console.log('-----------');
+        this.setState({
+            user: user
+        });
+    },
     render: function() {
 
-        var user = this.state.user;
+        var user = this.state.user;console.log(user.isLoggedIn)
         var overlay = <Login url='/user/login' />;
         var userArea = user.isLoggedIn ? (
             <ul className='nav navbar-nav navbar-right'>
-                <li><Link to='login'>登录</Link></li>
+                <li>
+                    <Link to='profile' params={{uid: user.profile.id}}>
+                        {user.profile.nick}
+                    </Link>
+                </li>
             </ul>
         ) : (
             <ul className='nav navbar-nav navbar-right'>
-                <li><Link to='profile' params={{id: user.profile.id}}>{user.profile.nick}</Link></li>
+                <li><Link to='login'>登录</Link></li>
             </ul>
         );
 
@@ -79,7 +92,7 @@ var routes = (
         <Route name='login' path='/user/login/' handler={Login}></Route>
         <Route name='signup' path='/user/signup/' handler={Signup}></Route>
         <Route name='update' path='/user/update/' handler={Update}></Route>
-        <Route name='profile' path='/user/profile/:id' handler={Profile}></Route>
+        <Route name='profile' path='/user/profile/:uid' handler={Profile}></Route>
         <DefaultRoute name='home' handler={Works}></DefaultRoute>
     </Route>
 );
