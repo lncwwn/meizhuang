@@ -12,6 +12,7 @@
     "flux": "^2.0.3",
     "jquery": "^1.11.3",
     "jsx-loader": "^0.13.2",
+    "masonry": "0.0.1",
     "react": "^0.13.3",
     "react-router": "^0.13.3",
     "reflux": "^0.2.8",
