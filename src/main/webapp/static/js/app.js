@@ -48,9 +48,10 @@ var WorksOfArt = React.createClass({
         var userArea = user.isLoggedIn ? (
             <ul className='nav navbar-nav navbar-right'>
                 <li>
-                    <Link to='profile' params={{uid: user.profile.id}}>
-                        {user.profile.nick}
+                    <Link to='profile' params={{uid: user.profile.id}} title={user.profile.nick}>
+                        {user.profile.nick.substr(0, 6)}...
                     </Link>
+                    <Link to="">
                 </li>
             </ul>
         ) : (
@@ -89,6 +90,7 @@ var WorksOfArt = React.createClass({
 var routes = (
     <Route handler={WorksOfArt}>
         <Route name='login' path='/user/login/' handler={Login}></Route>
+        <Route name='logout' path='/user/logout/:uid' handler={Logout}></Route>
         <Route name='signup' path='/user/signup/' handler={Signup}></Route>
         <Route name='update' path='/user/update/' handler={Update}></Route>
         <Route name='profile' path='/user/profile/:uid' handler={Profile}></Route>

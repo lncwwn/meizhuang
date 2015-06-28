@@ -36,6 +36,7 @@ var UserStore = Reflux.createStore({
     },
     afterLogout: function() {
         this.user = defaultUser;
+        this.trigger(this.user);
     },
     afterUpdate: function() {
         // TODO

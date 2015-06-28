@@ -52,8 +52,8 @@ webpackJsonp([0,1],[
 	        var userArea = user.isLoggedIn ? (
 	            React.createElement("ul", {className: "nav navbar-nav navbar-right"}, 
 	                React.createElement("li", null, 
-	                    React.createElement(Link, {to: "profile", params: {uid: user.profile.id}}, 
-	                        user.profile.nick
+	                    React.createElement(Link, {to: "profile", params: {uid: user.profile.id}, title: user.profile.nick}, 
+	                        user.profile.nick.substr(0, 6), "..."
 	                    )
 	                )
 	            )
