@@ -47,7 +47,7 @@ webpackJsonp([0,1],[
 	    },
 	    render: function() {
 
-	        var user = this.state.user;console.log(user.profile.nick)
+	        var user = this.state.user;
 	        var overlay = React.createElement(Login, {url: "/user/login"});
 	        var userArea = user.isLoggedIn ? (
 	            React.createElement("ul", {className: "nav navbar-nav navbar-right"}, 
@@ -35581,6 +35581,9 @@ webpackJsonp([0,1],[
 	        if (!nick || !password) return;
 
 	        var params = {nick: nick, password: password}, self = this;
+	        $.ajaxSetup({
+	            contentType:"application/x-www-form-urlencoded; charset=UTF-8"
+	        });
 	        $.post(MZ.base + '/user/login', 'params=' + JSON.stringify(params), function(data) {
 	            if (data) {
 	                data = JSON.parse(data);

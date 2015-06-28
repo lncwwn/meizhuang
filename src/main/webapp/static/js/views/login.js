@@ -27,6 +27,9 @@ var Login = React.createClass({
         if (!nick || !password) return;
 
         var params = {nick: nick, password: password}, self = this;
+        $.ajaxSetup({
+            contentType:"application/x-www-form-urlencoded; charset=UTF-8"
+        });
         $.post(MZ.base + '/user/login', 'params=' + JSON.stringify(params), function(data) {
             if (data) {
                 data = JSON.parse(data);

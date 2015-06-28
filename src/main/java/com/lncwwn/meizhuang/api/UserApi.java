@@ -50,7 +50,7 @@ public class UserApi extends BasicApi {
         return handler(2, "error", false);
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String login(HttpSession session, String params) {
         if (null == params) {
