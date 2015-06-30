@@ -54,7 +54,8 @@ webpackJsonp([0,1],[
 	                React.createElement("li", null, 
 	                    React.createElement(Link, {to: "profile", params: {uid: user.profile.id}, title: user.profile.nick}, 
 	                        user.profile.nick.substr(0, 6), "..."
-	                    )
+	                    ), 
+	                    React.createElement("a", {href: "javascript:;", onClick: actions.logout}, "退出")
 	                )
 	            )
 	        ) : (
@@ -35662,6 +35663,7 @@ webpackJsonp([0,1],[
 	    },
 	    afterLogout: function() {
 	        this.user = defaultUser;
+	        this.trigger(this.user);
 	    },
 	    afterUpdate: function() {
 	        // TODO
