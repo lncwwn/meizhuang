@@ -8,7 +8,8 @@
 'use strict';
 
 window.React = require('react');
-window.$ = require('jquery');
+window.$ = window.jQuery = require('jquery');
+require('bootstrap');
 
 var Reflux = require('reflux');
 
@@ -51,7 +52,18 @@ var WorksOfArt = React.createClass({
                     <Link to='profile' params={{uid: user.profile.id}} title={user.profile.nick}>
                         {user.profile.nick.substr(0, 6)}...
                     </Link>
-                    <a href='javascript:;' onClick={actions.logout}>退出</a>
+                </li>
+                <li className="dropdown">
+                    <a href="javascript:;" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span className="caret"></span></a>
+                    <ul className="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" className="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li role="separator" className="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
                 </li>
             </ul>
         ) : (
