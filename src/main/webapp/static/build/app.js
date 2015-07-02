@@ -52,21 +52,14 @@ webpackJsonp([0,1],[
 	        var overlay = React.createElement(Login, {url: "/user/login"});
 	        var userArea = user.isLoggedIn ? (
 	            React.createElement("ul", {className: "nav navbar-nav navbar-right"}, 
-	                React.createElement("li", null, 
-	                    React.createElement(Link, {to: "profile", params: {uid: user.profile.id}, title: user.profile.nick}, 
-	                        user.profile.nick.substr(0, 6), "..."
-	                    )
-	                ), 
 	                React.createElement("li", {className: "dropdown"}, 
-	                    React.createElement("a", {href: "javascript:;", className: "dropdown-toggle", "data-toggle": "dropdown", role: "button", "aria-haspopup": "true", "aria-expanded": "false"}, "Dropdown ", React.createElement("span", {className: "caret"})), 
-	                    React.createElement("ul", {className: "dropdown-menu"}, 
-	                        React.createElement("li", null, React.createElement("a", {href: "#"}, "Action")), 
-	                        React.createElement("li", null, React.createElement("a", {href: "#"}, "Another action")), 
-	                        React.createElement("li", null, React.createElement("a", {href: "#"}, "Something else here")), 
+	                    React.createElement("a", {href: "javascript:;", className: "dropdown-toggle", "data-toggle": "dropdown", 
+	                     role: "button", "aria-haspopup": "true", "aria-expanded": "false", title: user.profile.nick}, user.profile.nick.substr(0, 6), "..."), 
+	                    React.createElement("ul", {className: "dropdown-menu dropdown-menu-right"}, 
+	                        React.createElement("li", null, React.createElement(Link, {to: "profile", params: {uid: user.profile.id}}, "主页")), 
 	                        React.createElement("li", {role: "separator", className: "divider"}), 
-	                        React.createElement("li", null, React.createElement("a", {href: "#"}, "Separated link")), 
-	                        React.createElement("li", {role: "separator", className: "divider"}), 
-	                        React.createElement("li", null, React.createElement("a", {href: "#"}, "One more separated link"))
+	                        React.createElement("li", null, React.createElement("a", {href: "#"}, "发布作品")), 
+	                        React.createElement("li", null, React.createElement("a", {href: "#"}, "我的艺术馆"))
 	                    )
 	                )
 	            )
@@ -87,9 +80,6 @@ webpackJsonp([0,1],[
 	                                )
 	                            ), 
 	                            React.createElement("div", {className: "collapse navbar-collapse"}, 
-	                                React.createElement("ul", {className: "nav navbar-nav"}, 
-	                                    React.createElement("li", null, React.createElement("a", {href: "javascript:;"}, "我的艺术馆"))
-	                                ), 
 	                                userArea
 	                            )
 	                        )

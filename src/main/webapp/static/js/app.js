@@ -48,21 +48,14 @@ var WorksOfArt = React.createClass({
         var overlay = <Login url='/user/login' />;
         var userArea = user.isLoggedIn ? (
             <ul className='nav navbar-nav navbar-right'>
-                <li>
-                    <Link to='profile' params={{uid: user.profile.id}} title={user.profile.nick}>
-                        {user.profile.nick.substr(0, 6)}...
-                    </Link>
-                </li>
-                <li className="dropdown">
-                    <a href="javascript:;" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span className="caret"></span></a>
-                    <ul className="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" className="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li role="separator" className="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
+                <li className='dropdown'>
+                    <a href='javascript:;' className='dropdown-toggle' data-toggle='dropdown'
+                     role='button' aria-haspopup='true' aria-expanded='false' title={user.profile.nick}>{user.profile.nick.substr(0, 6)}...</a>
+                    <ul className='dropdown-menu dropdown-menu-right'>
+                        <li><Link to='profile' params={{uid: user.profile.id}}>主页</Link></li>
+                        <li role='separator' className='divider'></li>
+                        <li><a href='#'>发布作品</a></li>
+                        <li><a href='#'>我的艺术馆</a></li>
                     </ul>
                 </li>
             </ul>
@@ -83,9 +76,6 @@ var WorksOfArt = React.createClass({
                                 </Link>
                             </div>
                             <div className='collapse navbar-collapse'>
-                                <ul className='nav navbar-nav'>
-                                    <li><a href='javascript:;'>我的艺术馆</a></li>
-                                </ul>
                                 {userArea}
                             </div>
                         </div>
