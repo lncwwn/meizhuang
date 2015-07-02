@@ -42,6 +42,13 @@ var WorksOfArt = React.createClass({
             user: user
         });
     },
+    showUser: function(user) {
+        if (user.profile.nick.length > 6) {
+            return user.profile.nick.substr(0, 6) + '...';
+        }
+
+        return user.profile.nick;
+    },
     render: function() {
 
         var user = this.state.user;
@@ -49,12 +56,14 @@ var WorksOfArt = React.createClass({
         var userArea = user.isLoggedIn ? (
             <ul className='nav navbar-nav navbar-right'>
                 <li className='dropdown'>
-                    <a href='javascript:;' className='dropdown-toggle' data-toggle='dropdown'
-                     role='button' aria-haspopup='true' aria-expanded='false' title={user.profile.nick}>{user.profile.nick.substr(0, 6)}...</a>
+                    <a href='javascript:;' className='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false' title={user.profile.nick}>
+                        <span className='glyphicon glyphicon-user' aria-hidden='true'></span> {this.showUser(user)}
+                    </a>
                     <ul className='dropdown-menu dropdown-menu-right'>
-                        <li><Link to='profile' params={{uid: user.profile.id}}>主页</Link></li>
+                        <li><Link to='profile' params={{uid: user.profile.id}}>我的主页</Link></li>
                         <li role='separator' className='divider'></li>
                         <li><a href='#'>发布作品</a></li>
+                        <li role='separator' className='divider'></li>
                         <li><a href='#'>我的艺术馆</a></li>
                     </ul>
                 </li>

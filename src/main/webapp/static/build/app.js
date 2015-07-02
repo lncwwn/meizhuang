@@ -46,6 +46,13 @@ webpackJsonp([0,1],[
 	            user: user
 	        });
 	    },
+	    showUser: function(user) {
+	        if (user.profile.nick.length > 6) {
+	            return user.profile.nick.substr(0, 6) + '...';
+	        }
+
+	        return user.profile.nick;
+	    },
 	    render: function() {
 
 	        var user = this.state.user;
@@ -53,12 +60,14 @@ webpackJsonp([0,1],[
 	        var userArea = user.isLoggedIn ? (
 	            React.createElement("ul", {className: "nav navbar-nav navbar-right"}, 
 	                React.createElement("li", {className: "dropdown"}, 
-	                    React.createElement("a", {href: "javascript:;", className: "dropdown-toggle", "data-toggle": "dropdown", 
-	                     role: "button", "aria-haspopup": "true", "aria-expanded": "false", title: user.profile.nick}, user.profile.nick.substr(0, 6), "..."), 
+	                    React.createElement("a", {href: "javascript:;", className: "dropdown-toggle", "data-toggle": "dropdown", role: "button", "aria-haspopup": "true", "aria-expanded": "false", title: user.profile.nick}, 
+	                        React.createElement("span", {className: "glyphicon glyphicon-user", "aria-hidden": "true"}), " ", this.showUser(user)
+	                    ), 
 	                    React.createElement("ul", {className: "dropdown-menu dropdown-menu-right"}, 
-	                        React.createElement("li", null, React.createElement(Link, {to: "profile", params: {uid: user.profile.id}}, "主页")), 
+	                        React.createElement("li", null, React.createElement(Link, {to: "profile", params: {uid: user.profile.id}}, "我的主页")), 
 	                        React.createElement("li", {role: "separator", className: "divider"}), 
 	                        React.createElement("li", null, React.createElement("a", {href: "#"}, "发布作品")), 
+	                        React.createElement("li", {role: "separator", className: "divider"}), 
 	                        React.createElement("li", null, React.createElement("a", {href: "#"}, "我的艺术馆"))
 	                    )
 	                )
