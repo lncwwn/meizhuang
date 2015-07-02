@@ -14,6 +14,8 @@ public interface IUserService {
 
     User getById(long id);
 
+    User getByNick(String nick);
+
     List<User> getUsers();
 
     boolean create(User user);

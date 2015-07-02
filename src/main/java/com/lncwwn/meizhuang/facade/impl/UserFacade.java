@@ -2,6 +2,7 @@ package com.lncwwn.meizhuang.facade.impl;
 
 import com.lncwwn.meizhuang.facade.IUserFacade;
 import com.lncwwn.meizhuang.pojo.User;
+import com.lncwwn.meizhuang.service.IUserService;
 import com.lncwwn.meizhuang.service.impl.UserService;
 import com.lncwwn.meizhuang.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class UserFacade implements IUserFacade {
 
     @Autowired
-    private UserService userService;
+    private IUserService userService;
 
 
     @Override

@@ -39,6 +39,7 @@ public class UserService implements IUserService {
      * @param nick
      * @return
      */
+    @Override
     public User getByNick(String nick) {
         String sql = "select * from tb_user where nick = ?";
         try {
