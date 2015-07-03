@@ -7,11 +7,16 @@ var actions = Reflux.createActions({
     'logout': {},
     'signup': {},
     'update': {},
-    'showOverlay': {}
+    'showOverlay': {},
+    'works': {}
 });
 
 actions.logout.listen(function() {
 
+});
+
+actions.works.listen(function() {
+    $.get();
 });
 
 module.exports = actions;

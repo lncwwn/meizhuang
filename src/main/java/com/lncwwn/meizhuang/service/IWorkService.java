@@ -12,8 +12,8 @@ import java.util.List;
  */
 public interface IWorkService {
 
-    List<Work> list(String nick);
+    List<Work> list(Long userId, Integer offset, Integer limit);
 
-    void publish(Work work, String nick);
+    boolean publish(Work work);
 
 }
