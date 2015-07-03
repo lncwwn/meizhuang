@@ -60,7 +60,7 @@ public class WorkApi extends BasicApi {
             Double price = p.getDouble("price");
             Boolean sellOut = p.getBoolean("sellOut");
             Long galleryId = p.getLong("galleryId");
-            System.out.println(sellOut);
+
             Work work = new Work();
             work.setUser(userId);
             work.setName(name);

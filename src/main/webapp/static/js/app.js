@@ -24,6 +24,7 @@ var Signup = require('./views/signup');
 var Login = require('./views/login');
 var Update = require('./views/update');
 var Profile = require('./views/profile');
+var Publish = require('./views/publish.js');
 var UserStore = require('./stores/userStore');
 
 var WorksOfArt = React.createClass({
@@ -62,7 +63,7 @@ var WorksOfArt = React.createClass({
                     <ul className='dropdown-menu dropdown-menu-right'>
                         <li><Link to='profile' params={{uid: user.profile.id}}>我的主页</Link></li>
                         <li role='separator' className='divider'></li>
-                        <li><a href='#'>发布作品</a></li>
+                        <li><Link to='publish'>发布作品</Link></li>
                         <li role='separator' className='divider'></li>
                         <li><a href='#'>我的艺术馆</a></li>
                     </ul>
@@ -104,6 +105,7 @@ var routes = (
         <Route name='signup' path='/user/signup/' handler={Signup}></Route>
         <Route name='update' path='/user/update/' handler={Update}></Route>
         <Route name='profile' path='/user/profile/:uid' handler={Profile}></Route>
+        <Route name='publish' path='/work/publish' handler={Publish}></Route>
         <DefaultRoute name='home' handler={Works}></DefaultRoute>
     </Route>
 );
