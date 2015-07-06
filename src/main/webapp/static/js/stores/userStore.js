@@ -4,7 +4,11 @@ var Reflux = require('reflux');
 var actions = require('../actions/actions');
 
 // default state
-var defaultUser = {
+var userInSession = sessionStorage.getItem('currentUser');
+if (userInSession) {
+    userInSession = JSON.parse(userInSession);
+}
+var defaultUser = userInSession || {
     profile: {
         id: undefined,
         nick: null,
@@ -32,6 +36,7 @@ var UserStore = Reflux.createStore({
         this.user.profile.nick = profile.nick;
         this.user.profile.name = profile.name;
         this.user.profile.email = profile.email;
+        sessionStorage.setItem('currentUser', JSON.stringify(this.user));
         this.trigger(this.user);
     },
     afterLogout: function() {

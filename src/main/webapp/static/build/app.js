@@ -69,12 +69,15 @@ webpackJsonp([0,1],[
 	                        React.createElement("li", {role: "separator", className: "divider"}), 
 	                        React.createElement("li", null, React.createElement(Link, {to: "publish"}, "发布作品")), 
 	                        React.createElement("li", {role: "separator", className: "divider"}), 
-	                        React.createElement("li", null, React.createElement("a", {href: "#"}, "我的艺术馆"))
+	                        React.createElement("li", null, React.createElement("a", {href: "#"}, "我的艺术馆")), 
+	                        React.createElement("li", {role: "separator", className: "divider"}), 
+	                        React.createElement("li", null, React.createElement("a", {href: "#"}, "退出登录"))
 	                    )
 	                )
 	            )
 	        ) : (
 	            React.createElement("ul", {className: "nav navbar-nav navbar-right"}, 
+	                React.createElement("li", null, React.createElement(Link, {to: "signup"}, "用户注册")), 
 	                React.createElement("li", null, React.createElement(Link, {to: "login"}, "登录"))
 	            )
 	        );
@@ -82,7 +85,7 @@ webpackJsonp([0,1],[
 	        return (
 	            React.createElement("div", null, 
 	                React.createElement("div", {className: "header"}, 
-	                    React.createElement("div", {className: "navbar min-height mz-navbar", role: "navigation"}, 
+	                    React.createElement("div", {className: "navbar min-height mz-navbar navbar-fixed-top", role: "navigation"}, 
 	                        React.createElement("div", {className: "container-fluid"}, 
 	                            React.createElement("div", {className: "navbar-header"}, 
 	                                React.createElement(Link, {to: "home"}, 
@@ -48609,7 +48612,11 @@ webpackJsonp([0,1],[
 	var actions = __webpack_require__(233);
 
 	// default state
-	var defaultUser = {
+	var userInSession = sessionStorage.getItem('currentUser');
+	if (userInSession) {
+	    userInSession = JSON.parse(userInSession);
+	}
+	var defaultUser = userInSession || {
 	    profile: {
 	        id: undefined,
 	        nick: null,
@@ -48637,6 +48644,7 @@ webpackJsonp([0,1],[
 	        this.user.profile.nick = profile.nick;
 	        this.user.profile.name = profile.name;
 	        this.user.profile.email = profile.email;
+	        sessionStorage.setItem('currentUser', JSON.stringify(this.user));
 	        this.trigger(this.user);
 	    },
 	    afterLogout: function() {
@@ -48740,8 +48748,7 @@ webpackJsonp([0,1],[
 	                    React.createElement("textarea", {ref: "description", className: "form-control", rows: "5", placeholder: "请输入作品简介"})
 	                ), 
 	                React.createElement("div", {className: "form-group"}, 
-	                    React.createElement("input", {type: "text", className: "form-control", ref: "price", name: "price", placeholder: "请输入作品价格，可选"}), 
-	                    React.createElement("span", {className: "input-group-addon"}, "元")
+	                    React.createElement("input", {type: "text", className: "form-control", ref: "price", name: "price", placeholder: "请输入作品价格，可选"})
 	                ), 
 	                React.createElement("div", {className: "form-group"}, 
 	                    React.createElement("div", {className: "col-md-offset-3 col-md-6"}, 

@@ -27,7 +27,6 @@ var Publish = React.createClass({
                 </div>
                 <div className='form-group'>
                     <input type='text' className='form-control' ref='price' name='price' placeholder='请输入作品价格，可选'/>
-                    <span className='input-group-addon'>元</span>
                 </div>
                 <div className='form-group'>
                     <div className='col-md-offset-3 col-md-6'>

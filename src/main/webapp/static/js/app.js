@@ -66,11 +66,14 @@ var WorksOfArt = React.createClass({
                         <li><Link to='publish'>发布作品</Link></li>
                         <li role='separator' className='divider'></li>
                         <li><a href='#'>我的艺术馆</a></li>
+                        <li role='separator' className='divider'></li>
+                        <li><a href='#'>退出登录</a></li>
                     </ul>
                 </li>
             </ul>
         ) : (
             <ul className='nav navbar-nav navbar-right'>
+                <li><Link to='signup'>用户注册</Link></li>
                 <li><Link to='login'>登录</Link></li>
             </ul>
         );
@@ -78,7 +81,7 @@ var WorksOfArt = React.createClass({
         return (
             <div>
                 <div className='header'>
-                    <div className='navbar min-height mz-navbar' role='navigation'>
+                    <div className='navbar min-height mz-navbar navbar-fixed-top' role='navigation'>
                         <div className='container-fluid'>
                             <div className='navbar-header'>
                                 <Link to='home'>
