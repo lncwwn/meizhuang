@@ -12,7 +12,7 @@ var Broadcast = React.createClass({
     render: function() {
         return (
             <div className='row'>
-                <ul className="list-group col-md-3">
+                <ul className="list-group col-md-2">
                     <li className="list-group-item">
                         <span className="badge">6</span>
                         美桩1
@@ -26,7 +26,7 @@ var Broadcast = React.createClass({
                         美桩3
                     </li>
                 </ul>
-                <div className="jumbotron col-md-9">
+                <div className="jumbotron col-md-10">
                     <div className="container">
                       ...
                     </div>
