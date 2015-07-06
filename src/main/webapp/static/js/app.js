@@ -67,7 +67,7 @@ var WorksOfArt = React.createClass({
                         <li role='separator' className='divider'></li>
                         <li><a href='#'>我的艺术馆</a></li>
                         <li role='separator' className='divider'></li>
-                        <li><a href='#'>退出登录</a></li>
+                        <li><a href='javascript:;' onClick={actions.logout}>退出登录</a></li>
                     </ul>
                 </li>
             </ul>

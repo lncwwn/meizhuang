@@ -1,28 +1,52 @@
 'use strict';
 
-var Freewall = require('freewall');
+var actions = require('../actions/actions');
+var workStore = require('../stores/workStore');
+var MasonryMixin = require('react-masonry-mixin');
+var Broadcast = require('../components/broadcast');
+
+var masonryOptions = {
+    transitionDuration: 0
+};
 
 var Works = React.createClass({
-    componentDidMount: function() {
-        var wall = new Freewall.freewall('#js-works-list');
-        wall.fitWidth(200);
+    mixins: [
+        MasonryMixin('masonryContainer', masonryOptions)
+    ],
+
+    getInitialState: function() {
+        return {works: [
+                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp10576074.jpg', description: '这是描述1'},
+                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp7887718.jpg', description: '这是描述2'},
+                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp8589861.jpg', description: '这是描述3'},
+                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp10576074.jpg', description: '这是描述4'},
+                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp8589861.jpg', description: '这是描述5'},
+                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp7887718.jpg', description: '这是描述6'},
+                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp10576074.jpg', description: '这是描述7'}
+        ]};
     },
+
     render: function() {
+        var childElements = this.state.works.map(function(work) {
+            return (
+                <div className="col-xs-6 col-md-3">
+                    <div className='thumbnail'>
+                        <img src={work.href} />
+                        <div className="caption">
+                            {work.description}
+                        </div>
+                    </div>
+                </div>
+            );
+        });
         return (
-            <div id='js-works-list'>
-                <img src='http://img.alicdn.com/imgextra/i3/855442686/TB2W6FidFXXXXbRXpXXXXXXXXXX_!!855442686.jpg' className='item'/>
-                <img src='http://img.alicdn.com/imgextra/i1/855442686/TB2oAswbpXXXXaaXpXXXXXXXXXX_!!855442686.png' className='item'/>
-                <img src='http://img.alicdn.com/imgextra/i1/855442686/TB2oAswbpXXXXaaXpXXXXXXXXXX_!!855442686.png' className='item'/>
-                <img src='http://img.alicdn.com/imgextra/i1/855442686/TB2sqAIbpXXXXbjXXXXXXXXXXXX_!!855442686.png' className='item'/>
-                <img src='http://img.alicdn.com/imgextra/i1/855442686/TB2oAswbpXXXXaaXpXXXXXXXXXX_!!855442686.png' className='item'/>
-                <img src='http://img.alicdn.com/imgextra/i4/855442686/TB22DEycXXXXXXKXXXXXXXXXXXX_!!855442686.png' className='item'/>
-                <img src='http://img.alicdn.com/imgextra/i1/855442686/TB2oAswbpXXXXaaXpXXXXXXXXXX_!!855442686.png' className='item'/>
-                <img src='http://img.alicdn.com/imgextra/i2/855442686/TB27q4mdFXXXXa6XpXXXXXXXXXX_!!855442686.jpg' className='item'/>
-                <img src='http://img.alicdn.com/imgextra/i1/855442686/TB2oAswbpXXXXaaXpXXXXXXXXXX_!!855442686.png' className='item'/>
-                <img src='http://img.alicdn.com/imgextra/i3/855442686/TB2fVXKdFXXXXXtXXXXXXXXXXXX_!!855442686.jpg' className='item'/>
-                <img src='http://img.alicdn.com/imgextra/i1/855442686/TB2oAswbpXXXXaaXpXXXXXXXXXX_!!855442686.png' className='item'/>
-                <img src='http://img.alicdn.com/imgextra/i3/855442686/TB20NBydFXXXXceXXXXXXXXXXXX_!!855442686.jpg' className='item'/>
-                <img src='http://img.alicdn.com/imgextra/i1/855442686/TB2oAswbpXXXXaaXpXXXXXXXXXX_!!855442686.png' className='item'/>
+            <div>
+                <Broadcast />
+                <div className='row'>
+                    <div ref="masonryContainer" className='grid'>
+                        {childElements}
+                    </div>
+                </div>
             </div>
         );
     }

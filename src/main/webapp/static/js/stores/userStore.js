@@ -41,6 +41,7 @@ var UserStore = Reflux.createStore({
     },
     afterLogout: function() {
         this.user = defaultUser;
+        sessionStorage.removeItem('currentUser');
         this.trigger(this.user);
     },
     afterUpdate: function() {
