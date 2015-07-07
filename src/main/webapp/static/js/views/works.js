@@ -28,7 +28,11 @@ var Works = React.createClass({
                 {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp11461037.jpg', description: '这是描述10'},
                 {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp10003072.jpg', description: '这是描述11'},
                 {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp13897240.jpg', description: '这是描述11'},
-                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp13422858.jpg', description: '这是描述11'}
+                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp13422858.jpg', description: '这是描述11'},
+                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mz7859733_113139458193_2.jpg', description: '这是描述11'},
+                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzaf2b77f13911d915cd4dfc288b9e5.jpg', description: '这是描述11'},
+                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp2188677.jpg', description: '这是描述11'},
+                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzxin_0005040810376762328115.jpg', description: '这是描述11'}
         ]};
     },
 

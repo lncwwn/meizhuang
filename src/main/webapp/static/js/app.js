@@ -59,6 +59,7 @@ var WorksOfArt = React.createClass({
                 <li className='dropdown'>
                     <a href='javascript:;' className='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false' title={user.profile.nick}>
                         <span className='glyphicon glyphicon-user' aria-hidden='true'></span> {this.showUser(user)}
+                        <span className="caret"></span>
                     </a>
                     <ul className='dropdown-menu dropdown-menu-right'>
                         <li><Link to='profile' params={{uid: user.profile.id}}>我的主页</Link></li>
