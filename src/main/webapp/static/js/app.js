@@ -98,6 +98,15 @@ var WorksOfArt = React.createClass({
                 <div className='main'>
                     <RouteHandler/>
                 </div>
+                <div className='footer'>
+                    <ul className='list-inline'>
+                        <li className='text-muted'>Copyright &copy;2015, all rights reserved</li>
+                        <li><a href="#" className='text-muted'>使用入门</a></li>
+                        <li><a href="#" className='text-muted'>关于我们</a></li>
+                        <li><a href="#" className='text-muted'>免责声明</a></li>
+                        <li><a href="#" className='text-muted'>广告服务</a></li>
+                    </ul>
+                </div>
             </div>
         );
     }

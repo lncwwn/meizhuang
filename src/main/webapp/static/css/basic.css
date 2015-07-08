@@ -85,3 +85,12 @@ textarea {
 .caption {
     border-top: 2px solid #eee;
 }
+
+.footer {
+    width: 68%;
+    height: 100px;
+    margin: 60px auto 0;
+    padding: 10px 0 0;
+    text-align: center;
+    border-top: 1px dashed #ab9982;
+}

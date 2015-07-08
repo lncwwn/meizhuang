@@ -6,6 +6,7 @@ import com.lncwwn.meizhuang.pojo.Work;
 import com.lncwwn.meizhuang.service.IWorkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,22 +28,31 @@ public class WorkApi extends BasicApi {
 
     /**
      * 获取作品列表
+     *
+     * @param offset
      * @param limit
      * @return
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public List<Work> list(Integer limit) {
-        return null;
+    @ResponseBody
+    public String list(Integer offset, Integer limit) {
+        List<Work> works = workService.list(null, offset, limit);
+        return handler(1, "success", works);
     }
 
     /**
      * 获取指定用户的作品列表
+     *
+     * @param offset
      * @param limit
      * @param userId
      * @return
      */
-    public List<Work> list(Integer limit, Long userId) {
-        return null;
+    @RequestMapping(value = "/list/{userId}", method = RequestMethod.GET)
+    @ResponseBody
+    public String list(Integer offset, Integer limit, @PathVariable Long userId) {
+        List<Work> works = workService.list(userId, offset, limit);
+        return handler(1, "success", works);
     }
 
     /**
@@ -56,7 +66,7 @@ public class WorkApi extends BasicApi {
             Long userId = p.getLong("userId");
             String name = p.getString("name");
             String description = p.getString("description");
-            String address = p.getString("address");
+            String uri = p.getString("address");
             Double price = p.getDouble("price");
             Boolean sellOut = p.getBoolean("sellOut");
             Long galleryId = p.getLong("galleryId");
@@ -65,7 +75,7 @@ public class WorkApi extends BasicApi {
             work.setUser(userId);
             work.setName(name);
             work.setDescription(description);
-            work.setAddress(address);
+            work.setUri(uri);
             work.setPrice(price);
             work.setSellOut(sellOut);
             work.setGallery(galleryId);

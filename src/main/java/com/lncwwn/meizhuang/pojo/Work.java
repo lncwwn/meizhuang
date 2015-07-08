@@ -17,7 +17,7 @@ public class Work implements Serializable {
     private String name;
     private String description;
     // 作品图片链接
-    private String address;
+    private String uri;
     // 作品可定价
     private Double price;
     // 是否售完
@@ -59,12 +59,12 @@ public class Work implements Serializable {
         this.description = description;
     }
 
-    public String getAddress() {
-        return address;
+    public String getUri() {
+        return uri;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setUri(String uri) {
+        this.uri = uri;
     }
     public Double getPrice() {
         return price;

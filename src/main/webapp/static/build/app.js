@@ -101,6 +101,15 @@ webpackJsonp([0,1],[
 	                ), 
 	                React.createElement("div", {className: "main"}, 
 	                    React.createElement(RouteHandler, null)
+	                ), 
+	                React.createElement("div", {className: "footer"}, 
+	                    React.createElement("ul", {className: "list-inline"}, 
+	                        React.createElement("li", {className: "text-muted"}, "Copyright ©2015, all rights reserved"), 
+	                        React.createElement("li", null, React.createElement("a", {href: "#", className: "text-muted"}, "使用入门")), 
+	                        React.createElement("li", null, React.createElement("a", {href: "#", className: "text-muted"}, "关于我们")), 
+	                        React.createElement("li", null, React.createElement("a", {href: "#", className: "text-muted"}, "免责声明")), 
+	                        React.createElement("li", null, React.createElement("a", {href: "#", className: "text-muted"}, "广告服务"))
+	                    )
 	                )
 	            )
 	        );

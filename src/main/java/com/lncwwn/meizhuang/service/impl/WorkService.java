@@ -48,7 +48,7 @@ public class WorkService implements IWorkService {
             Long userId = work.getUser();
             String name = work.getName();
             String description = work.getDescription();
-            String address = work.getAddress();
+            String address = work.getUri();
             Double price = work.getPrice();
             String priceStr = price.toString();
             Boolean sellOut = work.isSellOut();
