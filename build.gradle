@@ -20,6 +20,10 @@ ext {
     servletVersion = '3.1.0'
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF8"
+}
+
 jettyRun {
     httpPort 8000
 }

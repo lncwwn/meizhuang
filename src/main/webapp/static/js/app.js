@@ -27,6 +27,7 @@ var Profile = require('./views/profile');
 var Publish = require('./views/publish.js');
 var UserStore = require('./stores/userStore');
 var Search = require('./components/Search');
+var Footer = require('./components/Footer');
 
 
 var WorksOfArt = React.createClass({
@@ -108,16 +109,7 @@ var WorksOfArt = React.createClass({
                 <div className='main'>
                     <RouteHandler />
                 </div>
-                <div className='footer'>
-                    <ul className='list-inline'>
-                        <li className='text-muted'>Copyright &copy;2015, all rights reserved</li>
-                        <li><a href="#" className='text-muted'>使用入门</a></li>
-                        <li><a href="#" className='text-muted'>关于我们</a></li>
-                        <li><a href="#" className='text-muted'>联系我们</a></li>
-                        <li><a href="#" className='text-muted'>免责声明</a></li>
-                        <li><a href="#" className='text-muted'>广告服务</a></li>
-                    </ul>
-                </div>
+                <Footer />
             </div>
         );
     }
