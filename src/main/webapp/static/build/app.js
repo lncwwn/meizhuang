@@ -33,7 +33,6 @@ webpackJsonp([0,1],[
 	var Search = __webpack_require__(261);
 	var Footer = __webpack_require__(262);
 
-
 	var WorksOfArt = React.createClass({displayName: "WorksOfArt",
 
 	    mixins: [
@@ -42470,12 +42469,16 @@ webpackJsonp([0,1],[
 	            );
 	        });
 
+	        var categoriesComponent = (
+	            React.createElement("ul", {className: "list-unstyled"}, 
+	                categories
+	            )
+	        );
+
 	        return (
 	            React.createElement("div", {className: "broadcast"}, 
 	                React.createElement("div", {className: "pull-left"}, 
-	                    React.createElement("ul", {className: "list-unstyled"}, 
-	                    categories
-	                    )
+	                    categoriesComponent
 	                ), 
 	                React.createElement("div", {className: "pull-right "})
 	            )
@@ -42509,7 +42512,6 @@ webpackJsonp([0,1],[
 	var defaultCategories = [];
 
 	var CategoryStore = Reflux.createStore({
-	    listenables: CategoryAction,
 
 	    init: function() {
 	        this.categories = defaultCategories;

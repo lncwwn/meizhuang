@@ -48,12 +48,16 @@ var Broadcast = React.createClass({
             );
         });
 
+        var categoriesComponent = (
+            <ul className='list-unstyled'>
+                {categories}
+            </ul>
+        );
+
         return (
             <div className='broadcast'>
                 <div className='pull-left'>
-                    <ul className='list-unstyled'>
-                    {categories}
-                    </ul>
+                    {categoriesComponent}
                 </div>
                 <div className='pull-right '></div>
             </div>

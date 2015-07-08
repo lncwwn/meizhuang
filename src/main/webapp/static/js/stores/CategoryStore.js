@@ -14,7 +14,6 @@ var CategoryAction = require('../actions/CategoryAction');
 var defaultCategories = [];
 
 var CategoryStore = Reflux.createStore({
-    listenables: CategoryAction,
 
     init: function() {
         this.categories = defaultCategories;

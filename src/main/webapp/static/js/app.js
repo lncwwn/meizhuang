@@ -29,7 +29,6 @@ var UserStore = require('./stores/userStore');
 var Search = require('./components/Search');
 var Footer = require('./components/Footer');
 
-
 var WorksOfArt = React.createClass({
 
     mixins: [
