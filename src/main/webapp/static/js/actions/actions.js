@@ -11,12 +11,4 @@ var actions = Reflux.createActions({
     'works': {}
 });
 
-actions.logout.listen(function() {
-
-});
-
-actions.works.listen(function() {
-    $.get();
-});
-
 module.exports = actions;

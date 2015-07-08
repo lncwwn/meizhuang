@@ -37982,14 +37982,6 @@ webpackJsonp([0,1],[
 	    'works': {}
 	});
 
-	actions.logout.listen(function() {
-
-	});
-
-	actions.works.listen(function() {
-	    $.get();
-	});
-
 	module.exports = actions;
 
 
@@ -42599,20 +42591,28 @@ webpackJsonp([0,1],[
 	    },
 	    render: function() {
 	        return (
-	            React.createElement("form", {className: "col-md-offset-3 col-md-6", onSubmit: this.handleSubmit}, 
-	                React.createElement("h3", null, "发布作品"), 
-	                React.createElement("div", {className: "form-group"}, 
-	                    React.createElement("input", {type: "text", className: "form-control", ref: "name", name: "name", placeholder: "请输入作品名称", autofocus: "true"})
-	                ), 
-	                React.createElement("div", {className: "form-group"}, 
-	                    React.createElement("textarea", {ref: "description", className: "form-control", rows: "5", placeholder: "请输入作品简介"})
-	                ), 
-	                React.createElement("div", {className: "form-group"}, 
-	                    React.createElement("input", {type: "text", className: "form-control", ref: "price", name: "price", placeholder: "请输入作品价格，可选"})
-	                ), 
-	                React.createElement("div", {className: "form-group"}, 
-	                    React.createElement("div", {className: "col-md-offset-3 col-md-6"}, 
-	                        React.createElement("button", {className: "btn btn-primary btn-lg col-md-10", type: "submit"}, "发布")
+	            React.createElement("div", {className: "clearfix"}, 
+	                React.createElement("form", {className: "col-md-offset-3 col-md-6", onSubmit: this.handleSubmit}, 
+	                    React.createElement("h3", null, "发布作品"), 
+	                    React.createElement("div", {className: "form-group"}, 
+	                        React.createElement("input", {type: "text", className: "form-control", ref: "name", name: "name", placeholder: "请输入作品名称", autofocus: "true"})
+	                    ), 
+	                    React.createElement("div", {className: "form-group"}, 
+	                        React.createElement("input", {type: "file", className: "form-control", ref: "file", name: "file"})
+	                    ), 
+	                    React.createElement("div", {className: "form-group"}, 
+	                        React.createElement("div", {className: "col-md-12 img-preview"})
+	                    ), 
+	                    React.createElement("div", {className: "form-group"}, 
+	                        React.createElement("textarea", {ref: "description", className: "form-control", rows: "5", placeholder: "请输入作品简介"})
+	                    ), 
+	                    React.createElement("div", {className: "form-group"}, 
+	                        React.createElement("input", {type: "text", className: "form-control", ref: "price", name: "price", placeholder: "请输入作品价格，可选"})
+	                    ), 
+	                    React.createElement("div", {className: "form-group"}, 
+	                        React.createElement("div", {className: "col-md-offset-3 col-md-6"}, 
+	                            React.createElement("button", {className: "btn btn-primary btn-lg col-md-10", type: "submit"}, "发布")
+	                        )
 	                    )
 	                )
 	            )
