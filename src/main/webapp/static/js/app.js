@@ -26,6 +26,8 @@ var Update = require('./views/update');
 var Profile = require('./views/profile');
 var Publish = require('./views/publish.js');
 var UserStore = require('./stores/userStore');
+var Search = require('./components/Search');
+
 
 var WorksOfArt = React.createClass({
 
@@ -33,16 +35,19 @@ var WorksOfArt = React.createClass({
         require('react-router').Navigation,
         Reflux.listenTo(UserStore, 'updateUser')
     ],
+
     getInitialState: function() {
         return {
             user: UserStore.getUser()
         };
     },
+
     updateUser: function(user) {
         this.setState({
             user: user
         });
     },
+
     showUser: function(user) {
         if (user.profile.nick.length > 6) {
             return user.profile.nick.substr(0, 6) + '...';
@@ -50,6 +55,7 @@ var WorksOfArt = React.createClass({
 
         return user.profile.nick;
     },
+
     render: function() {
 
         var user = this.state.user;
@@ -57,7 +63,8 @@ var WorksOfArt = React.createClass({
         var userArea = user.isLoggedIn ? (
             <ul className='nav navbar-nav navbar-right'>
                 <li className='dropdown'>
-                    <a href='javascript:;' className='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false' title={user.profile.nick}>
+                    <a href='javascript:;' className='dropdown-toggle' data-toggle='dropdown'
+                    role='button' aria-haspopup='true' aria-expanded='false' title={user.profile.nick}>
                         <span className='glyphicon glyphicon-user' aria-hidden='true'></span> {this.showUser(user)}
                         <span className="caret"></span>
                     </a>
@@ -89,6 +96,9 @@ var WorksOfArt = React.createClass({
                                     <a className='navbar-brand' href='javascript:;'>美桩网</a>
                                 </Link>
                             </div>
+                            <div className='nav navbar-nav'>
+                                <Search />
+                            </div>
                             <div className='collapse navbar-collapse'>
                                 {userArea}
                             </div>
@@ -96,13 +106,14 @@ var WorksOfArt = React.createClass({
                     </div>
                 </div>
                 <div className='main'>
-                    <RouteHandler/>
+                    <RouteHandler />
                 </div>
                 <div className='footer'>
                     <ul className='list-inline'>
                         <li className='text-muted'>Copyright &copy;2015, all rights reserved</li>
                         <li><a href="#" className='text-muted'>使用入门</a></li>
                         <li><a href="#" className='text-muted'>关于我们</a></li>
+                        <li><a href="#" className='text-muted'>联系我们</a></li>
                         <li><a href="#" className='text-muted'>免责声明</a></li>
                         <li><a href="#" className='text-muted'>广告服务</a></li>
                     </ul>

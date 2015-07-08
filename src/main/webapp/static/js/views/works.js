@@ -3,7 +3,7 @@
 var actions = require('../actions/actions');
 var workStore = require('../stores/workStore');
 var MasonryMixin = require('react-masonry-mixin');
-var Broadcast = require('../components/broadcast');
+var Broadcast = require('../components/Broadcast');
 
 var masonryOptions = {
     transitionDuration: 0
