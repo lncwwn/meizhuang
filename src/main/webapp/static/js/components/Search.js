@@ -41,7 +41,7 @@ var Search = React.createClass({
         return (
             <ul className='list-inline search-area'>
                 <li>
-                    <input type="text" className="form-control" placeholder="请输入搜索关键词，如：木石盆景"
+                    <input type="text" className="form-control" placeholder="搜索词，如：山水盆景"
                     onClick={this.expandSearch} onBlur={this.resetSearch} />
                 </li>
                 <li>

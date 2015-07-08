@@ -24,14 +24,14 @@ webpackJsonp([0,1],[
 	var Link = ReactRouter.Link;
 	var actions = __webpack_require__(2);
 	var Works = __webpack_require__(235);
-	var Signup = __webpack_require__(255);
+	var Signup = __webpack_require__(257);
 	var Login = __webpack_require__(1);
-	var Update = __webpack_require__(256);
-	var Profile = __webpack_require__(257);
-	var Publish = __webpack_require__(258);
+	var Update = __webpack_require__(258);
+	var Profile = __webpack_require__(259);
+	var Publish = __webpack_require__(260);
 	var UserStore = __webpack_require__(26);
-	var Search = __webpack_require__(259);
-	var Footer = __webpack_require__(260);
+	var Search = __webpack_require__(261);
+	var Footer = __webpack_require__(262);
 
 
 	var WorksOfArt = React.createClass({displayName: "WorksOfArt",
@@ -42418,7 +42418,7 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 254 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * broadcast components
@@ -42429,22 +42429,52 @@ webpackJsonp([0,1],[
 
 	'use strict';
 
+	var Reflux = __webpack_require__(3);
+
+	var CategoryStore = __webpack_require__(255);
+	var CategoryAction = __webpack_require__(256);
+
 	var Broadcast = React.createClass({displayName: "Broadcast",
 
+	    mixins: [
+	        Reflux.listenTo(CategoryStore, 'updateCategories')
+	    ],
+
+	    getInitialState: function() {
+	        return {
+	            categories: CategoryStore.getCategories()
+	        };
+	    },
+
+	    componentDidMount: function() {
+	        $.get(MZ.base + '/category/list', function(data) {
+	            if (data) {
+	                data = JSON.parse(data);
+	                data = data.data;
+	                CategoryAction.categories(data);
+	            }
+	        });
+	    },
+
+	    updateCategories: function(categories) {
+	        this.setState({
+	            categories: categories
+	        });
+	    },
+
 	    render: function() {
+
+	        var categories = this.state.categories.map(function(category) {
+	            return (
+	                React.createElement("li", null, React.createElement("a", {href: "#", className: "text-muted"}, category.name))
+	            );
+	        });
+
 	        return (
 	            React.createElement("div", {className: "broadcast"}, 
 	                React.createElement("div", {className: "pull-left"}, 
 	                    React.createElement("ul", {className: "list-unstyled"}, 
-	                        React.createElement("li", null, React.createElement("a", {href: "#", className: "text-muted"}, "树木盆景")), 
-	                        React.createElement("li", null, React.createElement("a", {href: "#", className: "text-muted"}, "山水盆景")), 
-	                        React.createElement("li", null, React.createElement("a", {href: "#", className: "text-muted"}, "树石盆景")), 
-	                        React.createElement("li", null, React.createElement("a", {href: "#", className: "text-muted"}, "微型盆景")), 
-	                        React.createElement("li", null, React.createElement("a", {href: "#", className: "text-muted"}, "水旱盆景")), 
-	                        React.createElement("li", null, React.createElement("a", {href: "#", className: "text-muted"}, "花草盆景")), 
-	                        React.createElement("li", null, React.createElement("a", {href: "#", className: "text-muted"}, "挂壁盆景")), 
-	                        React.createElement("li", null, React.createElement("a", {href: "#", className: "text-muted"}, "异型盆景")), 
-	                        React.createElement("li", null, React.createElement("a", {href: "#", className: "text-muted"}, "其它盆景"))
+	                    categories
 	                    )
 	                ), 
 	                React.createElement("div", {className: "pull-right "})
@@ -42461,6 +42491,69 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 255 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Category store
+	 *
+	 * @author victor li
+	 * @date 2015/07/08
+	 */
+
+	'use strict';
+
+	var Reflux = __webpack_require__(3);
+
+	var CategoryAction = __webpack_require__(256);
+
+	var defaultCategories = [];
+
+	var CategoryStore = Reflux.createStore({
+	    listenables: CategoryAction,
+
+	    init: function() {
+	        this.categories = defaultCategories;
+	        this.listenTo(CategoryAction.categories, 'onLoadCategories');
+	    },
+
+	    onLoadCategories: function(categories) {console.log(categories)
+	        this.categories = categories;
+	        this.trigger(this.categories);
+	    },
+
+	    getCategories: function() {
+	        return this.categories;
+	    }
+
+	});
+
+	module.exports = CategoryStore;
+
+
+/***/ },
+/* 256 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Category action
+	 *
+	 * @author victor li
+	 * @date 2015/07/08
+	 */
+
+	'use strict';
+
+	var Reflux = __webpack_require__(3);
+
+	var CategoryAction = Reflux.createActions({
+	    'categories': {}
+	});
+
+	module.exports = CategoryAction;
+
+
+/***/ },
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42513,7 +42606,7 @@ webpackJsonp([0,1],[
 	module.exports = Signup;
 
 /***/ },
-/* 256 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42547,7 +42640,7 @@ webpackJsonp([0,1],[
 	module.exports = Update;
 
 /***/ },
-/* 257 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Profile = React.createClass({displayName: "Profile",
@@ -42567,7 +42660,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 258 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42616,7 +42709,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 259 */
+/* 261 */
 /***/ function(module, exports) {
 
 	/**
@@ -42662,7 +42755,7 @@ webpackJsonp([0,1],[
 	        return (
 	            React.createElement("ul", {className: "list-inline search-area"}, 
 	                React.createElement("li", null, 
-	                    React.createElement("input", {type: "text", className: "form-control", placeholder: "请输入搜索关键词，如：木石盆景", 
+	                    React.createElement("input", {type: "text", className: "form-control", placeholder: "搜索词，如：山水盆景", 
 	                    onClick: this.expandSearch, onBlur: this.resetSearch})
 	                ), 
 	                React.createElement("li", null, 
@@ -42678,7 +42771,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 260 */
+/* 262 */
 /***/ function(module, exports) {
 
 	/**
