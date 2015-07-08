@@ -38061,6 +38061,13 @@ webpackJsonp([0,1],[
 /* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/**
+	 * work store
+	 *
+	 * @author victor li
+	 * @date 2015/07/07
+	 */
+
 	'use strict';
 
 	var Reflux = __webpack_require__(211);
@@ -38083,7 +38090,7 @@ webpackJsonp([0,1],[
 	    }
 	});
 
-	module.exports
+	module.exports = WorkStore;
 
 
 /***/ },

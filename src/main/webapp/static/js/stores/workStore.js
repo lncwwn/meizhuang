@@ -1,3 +1,10 @@
+/**
+ * work store
+ *
+ * @author victor li
+ * @date 2015/07/07
+ */
+
 'use strict';
 
 var Reflux = require('reflux');
@@ -20,4 +27,4 @@ var WorkStore = Reflux.createStore({
     }
 });
 
-module.exports
+module.exports = WorkStore;
