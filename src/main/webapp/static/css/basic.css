@@ -72,12 +72,14 @@ textarea {
     height: 29px;
     background-color: #e6edf5;
     display: inline-block;
+    font-size: 13px;
 }
 
 .search-area button {
     height: 29px;
     vertical-align: baseline;
     padding: 3px 12px;
+    font-size: 13px;
 }
 
 .broadcast {
