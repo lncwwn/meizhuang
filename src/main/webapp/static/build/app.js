@@ -42513,10 +42513,10 @@ webpackJsonp([0,1],[
 
 	    init: function() {
 	        this.categories = defaultCategories;
-	        this.listenTo(CategoryAction.categories, 'onLoadCategories');
+	        this.listenTo(CategoryAction.categories, 'afterCategoriesLoaded');
 	    },
 
-	    onLoadCategories: function(categories) {console.log(categories)
+	    afterCategoriesLoaded: function(categories) {
 	        this.categories = categories;
 	        this.trigger(this.categories);
 	    },
