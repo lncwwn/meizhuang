@@ -38,7 +38,7 @@ var Signup = React.createClass({
                 <input type='text' className='form-control' ref='email' name='email' placeholder='邮箱帐号'/>
                 <button className='btn btn-default btn-primary btn-block js-user-register-btn'>注册</button>
                 <div className='form-bottom'>
-                    已有账户? <Link to='login'>立即登录</Link>
+                    <span className='text-muted'>已有账户?</span> <Link to='login'>立即登录</Link>
                 </div>
             </form>
         );

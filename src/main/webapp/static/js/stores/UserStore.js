@@ -1,7 +1,7 @@
 'use strict';
 
 var Reflux = require('reflux');
-var actions = require('../actions/actions');
+var UserAction = require('../actions/UserAction');
 
 // default state
 var userInSession = sessionStorage.getItem('currentUser');
@@ -19,13 +19,13 @@ var defaultUser = userInSession || {
 };
 
 var UserStore = Reflux.createStore({
-    listenables: actions,
+    listenables: UserAction,
 
     init: function() {
         this.user = defaultUser;
-        this.listenTo(actions.signup, this.afterSignup),
-        this.listenTo(actions.login, this.afterLogin),
-        this.listenTo(actions.logout, this.afterLogout)
+        this.listenTo(UserAction.signup, this.afterSignup),
+        this.listenTo(UserAction.login, this.afterLogin),
+        this.listenTo(UserAction.logout, this.afterLogout)
     },
     afterSignup: function() {
         // TODO

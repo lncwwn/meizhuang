@@ -7,8 +7,7 @@
 
 'use strict';
 
-var actions = require('../actions/actions');
-var userStore = require('../stores/userStore.js');
+var UserAction = require('../actions/UserAction');
 var ReactRouter = require('react-router');
 var Link = ReactRouter.Link;
 
@@ -35,7 +34,7 @@ var Login = React.createClass({
                 data = JSON.parse(data);
                 if (data.code === 1) {
                     var user = data.data;
-                    actions.login(user);
+                    UserAction.login(user);
                     self.transitionTo('home');
                 } else {
                     //common.warn(data.msg);
@@ -51,12 +50,12 @@ var Login = React.createClass({
                 <input type='password' className='form-control' ref='password' name='password' placeholder='密码'/>
                 <div className='checkbox'>
                     <label>
-                        <input type='checkbox' name='remember'/> 记住我
+                        <input type='checkbox' name='remember'/> <span className='text-muted'>记住我</span>
                     </label>
                 </div>
                 <button className='btn btn-default btn-primary btn-block js-user-login-btn'> 登录</button>
                 <div className='form-bottom'>
-                    <Link to='signup'>注册帐号</Link> 或者 <Link to='update'>修改密码</Link>
+                    <Link to='signup'>注册帐号</Link> <span className='text-muted'>或者</span> <Link to='update'>修改密码</Link>
                 </div>
             </form>
         );

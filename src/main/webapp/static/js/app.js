@@ -18,14 +18,14 @@ var Route = ReactRouter.Route;
 var RouteHandler = ReactRouter.RouteHandler;
 var DefaultRoute = ReactRouter.DefaultRoute;
 var Link = ReactRouter.Link;
-var actions = require('./actions/actions');
+var UserAction = require('./actions/UserAction');
 var Work = require('./views/Work');
-var Signup = require('./views/signup');
-var Login = require('./views/login');
-var Update = require('./views/update');
-var Profile = require('./views/profile');
-var Publish = require('./views/publish.js');
-var UserStore = require('./stores/userStore');
+var Signup = require('./views/Signup');
+var Login = require('./views/Login');
+var Update = require('./views/Update');
+var Profile = require('./views/Profile');
+var Publish = require('./views/Publish.js');
+var UserStore = require('./stores/UserStore');
 var Search = require('./components/Search');
 var Footer = require('./components/Footer');
 
@@ -59,7 +59,6 @@ var WorksOfArt = React.createClass({
     render: function() {
 
         var user = this.state.user;
-        var overlay = <Login url='/user/login' />;
         var userArea = user.isLoggedIn ? (
             <ul className='nav navbar-nav navbar-right'>
                 <li className='dropdown'>
@@ -75,7 +74,7 @@ var WorksOfArt = React.createClass({
                         <li role='separator' className='divider'></li>
                         <li><a href='#'>我的艺术馆</a></li>
                         <li role='separator' className='divider'></li>
-                        <li><a href='javascript:;' onClick={actions.logout}>退出登录</a></li>
+                        <li><a href='javascript:;' onClick={UserAction.logout}>退出登录</a></li>
                     </ul>
                 </li>
             </ul>

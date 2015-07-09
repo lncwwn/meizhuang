@@ -19,7 +19,7 @@ var Update = React.createClass({
                 <input type='password' className='form-control' name='password_confirm' placeholder='再次输入新密码'/>
                 <button className='btn btn-default btn-primary btn-block' type='submit'>更换密码</button>
                 <div className='form-bottom'>
-                    不，<Link to='login'>直接登录</Link>
+                    <span className='text-muted'>不，</span><Link to='login'>直接登录</Link>
                 </div>
             </form>
         );
