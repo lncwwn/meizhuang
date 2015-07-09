@@ -1,13 +1,16 @@
+/**
+ * Work action
+ *
+ * @author victor li
+ * @date 2015/07/09
+ */
+
 'use strict';
 
 var Reflux = require('reflux');
 
 var actions = Reflux.createActions({
-    'login': {},
-    'logout': {},
-    'signup': {},
-    'update': {},
-    'showOverlay': {}
+    'works': {}
 });
 
 module.exports = actions;

@@ -23,15 +23,15 @@ webpackJsonp([0,1],[
 	var DefaultRoute = ReactRouter.DefaultRoute;
 	var Link = ReactRouter.Link;
 	var actions = __webpack_require__(2);
-	var Works = __webpack_require__(235);
-	var Signup = __webpack_require__(257);
+	var Work = __webpack_require__(235);
+	var Signup = __webpack_require__(258);
 	var Login = __webpack_require__(1);
-	var Update = __webpack_require__(258);
-	var Profile = __webpack_require__(259);
-	var Publish = __webpack_require__(260);
+	var Update = __webpack_require__(259);
+	var Profile = __webpack_require__(260);
+	var Publish = __webpack_require__(261);
 	var UserStore = __webpack_require__(26);
-	var Search = __webpack_require__(261);
-	var Footer = __webpack_require__(262);
+	var Search = __webpack_require__(262);
+	var Footer = __webpack_require__(263);
 
 	var WorksOfArt = React.createClass({displayName: "WorksOfArt",
 
@@ -125,7 +125,7 @@ webpackJsonp([0,1],[
 	        React.createElement(Route, {name: "update", path: "/user/update/", handler: Update}), 
 	        React.createElement(Route, {name: "profile", path: "/user/profile/:uid", handler: Profile}), 
 	        React.createElement(Route, {name: "publish", path: "/work/publish", handler: Publish}), 
-	        React.createElement(DefaultRoute, {name: "home", handler: Works})
+	        React.createElement(DefaultRoute, {name: "home", handler: Work})
 	    )
 	);
 
@@ -220,8 +220,7 @@ webpackJsonp([0,1],[
 	    'logout': {},
 	    'signup': {},
 	    'update': {},
-	    'showOverlay': {},
-	    'works': {}
+	    'showOverlay': {}
 	});
 
 	module.exports = actions;
@@ -38071,12 +38070,20 @@ webpackJsonp([0,1],[
 /* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/**
+	 * Works view
+	 *
+	 * @author victor li
+	 * @date 2015/07/09
+	 */
 	'use strict';
 
-	var actions = __webpack_require__(2);
-	var workStore = __webpack_require__(236);
-	var MasonryMixin = __webpack_require__(237);
-	var Broadcast = __webpack_require__(254);
+	var Reflux = __webpack_require__(3);
+
+	var WorkAction = __webpack_require__(236);
+	var WorkStore = __webpack_require__(237);
+	var MasonryMixin = __webpack_require__(238);
+	var Broadcast = __webpack_require__(255);
 
 	var masonryOptions = {
 	    transitionDuration: 0
@@ -38084,38 +38091,37 @@ webpackJsonp([0,1],[
 
 	var Works = React.createClass({displayName: "Works",
 	    mixins: [
-	        MasonryMixin('masonryContainer', masonryOptions)
+	        MasonryMixin('masonryContainer', masonryOptions),
+	        Reflux.listenTo(WorkStore, 'updateWorks')
 	    ],
 
 	    getInitialState: function() {
-	        return {works: [
-	                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp10576074.jpg', description: '这是描述1'},
-	                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp7887718.jpg', description: '这是描述2'},
-	                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp8589861.jpg', description: '这是描述3'},
-	                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp6049634.jpg', description: '这是描述4'},
-	                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp8589861.jpg', description: '这是描述5'},
-	                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp7887718.jpg', description: '这是描述6'},
-	                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp10457336.jpg', description: '这是描述7'},
-	                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp9585973.jpg', description: '这是描述8'},
-	                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp13458958.jpg', description: '这是描述9'},
-	                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp11461037.jpg', description: '这是描述10'},
-	                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp10003072.jpg', description: '这是描述11'},
-	                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp13897240.jpg', description: '这是描述11'},
-	                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp13422858.jpg', description: '这是描述11'},
-	                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mz7859733_113139458193_2.jpg', description: '这是描述11'},
-	                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzaf2b77f13911d915cd4dfc288b9e5.jpg', description: '这是描述11'},
-	                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp2188677.jpg', description: '这是描述11'},
-	                {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzxin_0005040810376762328115.jpg', description: '这是描述11'}
-	        ]};
+	        return {works: []};
+	    },
+
+	    componentDidMount: function() {
+	        $.get(MZ.base + '/work/list?offset=0&limit=100', function(data) {
+	            if (data) {
+	                data = JSON.parse(data);
+	                data = data.data;
+	                WorkAction.works(data);
+	            }
+	        });
+	    },
+
+	    updateWorks: function(works) {
+	        this.setState({
+	            works: works
+	        });
 	    },
 
 	    render: function() {
 	        var childElements = this.state.works.map(function(work) {
 	            return (
-	                React.createElement("div", {className: "col-xs-6 col-md-3"}, 
+	                React.createElement("div", {className: "col-xs-6 col-md-3", key: work.id}, 
 	                    React.createElement("div", {className: "thumbnail"}, 
 	                        React.createElement("a", {href: "javascript:;"}, 
-	                            React.createElement("img", {src: work.href})
+	                            React.createElement("img", {src: work.uri})
 	                        ), 
 	                        React.createElement("div", {className: "caption"}, 
 	                            work.description
@@ -38124,6 +38130,7 @@ webpackJsonp([0,1],[
 	                )
 	            );
 	        });
+
 	        return (
 	            React.createElement("div", null, 
 	                React.createElement(Broadcast, null), 
@@ -38145,6 +38152,28 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
+	 * Work action
+	 *
+	 * @author victor li
+	 * @date 2015/07/09
+	 */
+
+	'use strict';
+
+	var Reflux = __webpack_require__(3);
+
+	var actions = Reflux.createActions({
+	    'works': {}
+	});
+
+	module.exports = actions;
+
+
+/***/ },
+/* 237 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
 	 * work store
 	 *
 	 * @author victor li
@@ -38154,35 +38183,31 @@ webpackJsonp([0,1],[
 	'use strict';
 
 	var Reflux = __webpack_require__(3);
-	var actions = __webpack_require__(2);
+	var WorkAction = __webpack_require__(236);
 
 	var WorkStore = Reflux.createStore({
-	    listenables: actions,
 
 	    init: function() {
-	        this.listenTo(actions.works, this.loadWorks);
+	        this.listenTo(WorkAction.works, this.afterWorksLoaded);
 	    },
 
-	    loadWorks: function() {
-	        var works = [
-	            {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp10576074.jpg'},
-	            {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp7887718.jpg'},
-	            {href: 'http://7sbncd.com1.z0.glb.clouddn.com/mzp8589861.jpg'}
-	        ];
-	        this.trigger(works);
+	    afterWorksLoaded: function(works) {
+	        this.works = works;
+	        this.trigger(this.works);
 	    }
+
 	});
 
 	module.exports = WorkStore;
 
 
 /***/ },
-/* 237 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isBrowser = (typeof window !== 'undefined');
-	var Masonry = isBrowser ? window.Masonry || __webpack_require__(238) : null;
-	var imagesloaded = isBrowser ? __webpack_require__(251) : null;
+	var Masonry = isBrowser ? window.Masonry || __webpack_require__(239) : null;
+	var imagesloaded = isBrowser ? __webpack_require__(252) : null;
 
 	function MasonryMixin() {
 	    return function(reference, options) {
@@ -38294,7 +38319,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 238 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -38488,8 +38513,8 @@ webpackJsonp([0,1],[
 	// -------------------------- transport -------------------------- //
 	if (true) {
 	  module.exports = masonryDefinition(
-	    __webpack_require__(239),
-	    __webpack_require__(249)
+	    __webpack_require__(240),
+	    __webpack_require__(250)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -38510,7 +38535,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 239 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -39501,12 +39526,12 @@ webpackJsonp([0,1],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerDefinition(
-	    __webpack_require__(243),
-	    __webpack_require__(240),
-	    __webpack_require__(242),
 	    __webpack_require__(244),
-	    __webpack_require__(246),
-	    __webpack_require__(247)
+	    __webpack_require__(241),
+	    __webpack_require__(243),
+	    __webpack_require__(245),
+	    __webpack_require__(247),
+	    __webpack_require__(248)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -39535,7 +39560,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 240 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -39599,7 +39624,7 @@ webpackJsonp([0,1],[
 
 	// transport
 	if ( true ) {
-	  module.exports = defineDocReady( __webpack_require__(241) );
+	  module.exports = defineDocReady( __webpack_require__(242) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
 	  // if RequireJS, then doc is already ready
@@ -39614,7 +39639,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 241 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -39702,7 +39727,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 242 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -40145,7 +40170,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 243 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -40233,7 +40258,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 244 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -40442,7 +40467,7 @@ webpackJsonp([0,1],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(245) );
+	  module.exports = defineGetSize( __webpack_require__(246) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -40455,7 +40480,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 245 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -40516,7 +40541,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 246 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -40629,7 +40654,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 247 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -41139,9 +41164,9 @@ webpackJsonp([0,1],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerItemDefinition(
-	    __webpack_require__(242),
-	    __webpack_require__(244),
-	    __webpack_require__(248)
+	    __webpack_require__(243),
+	    __webpack_require__(245),
+	    __webpack_require__(249)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -41165,7 +41190,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 248 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -41226,7 +41251,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 249 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -41435,7 +41460,7 @@ webpackJsonp([0,1],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(250) );
+	  module.exports = defineGetSize( __webpack_require__(251) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -41448,7 +41473,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 250 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -41509,7 +41534,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 251 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -41527,8 +41552,8 @@ webpackJsonp([0,1],[
 	    // CommonJS
 	    module.exports = factory(
 	      window,
-	      __webpack_require__(252),
-	      __webpack_require__(253)
+	      __webpack_require__(253),
+	      __webpack_require__(254)
 	    );
 	  } else if ( typeof define === 'function' && define.amd ) {
 	    // AMD
@@ -41850,7 +41875,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 252 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -42328,7 +42353,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 253 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -42416,7 +42441,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 254 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42430,8 +42455,8 @@ webpackJsonp([0,1],[
 
 	var Reflux = __webpack_require__(3);
 
-	var CategoryStore = __webpack_require__(255);
-	var CategoryAction = __webpack_require__(256);
+	var CategoryStore = __webpack_require__(256);
+	var CategoryAction = __webpack_require__(257);
 
 	var Broadcast = React.createClass({displayName: "Broadcast",
 
@@ -42465,7 +42490,7 @@ webpackJsonp([0,1],[
 
 	        var categories = this.state.categories.map(function(category) {
 	            return (
-	                React.createElement("li", null, React.createElement("a", {href: "#", className: "text-muted"}, category.name))
+	                React.createElement("li", {key: category.id}, React.createElement("a", {href: "#", className: "text-muted"}, category.name))
 	            );
 	        });
 
@@ -42493,7 +42518,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 255 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42507,7 +42532,7 @@ webpackJsonp([0,1],[
 
 	var Reflux = __webpack_require__(3);
 
-	var CategoryAction = __webpack_require__(256);
+	var CategoryAction = __webpack_require__(257);
 
 	var defaultCategories = [];
 
@@ -42533,7 +42558,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 256 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42555,7 +42580,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 257 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42608,7 +42633,7 @@ webpackJsonp([0,1],[
 	module.exports = Signup;
 
 /***/ },
-/* 258 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42642,7 +42667,7 @@ webpackJsonp([0,1],[
 	module.exports = Update;
 
 /***/ },
-/* 259 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Profile = React.createClass({displayName: "Profile",
@@ -42662,7 +42687,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 260 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42711,7 +42736,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 261 */
+/* 262 */
 /***/ function(module, exports) {
 
 	/**
@@ -42773,7 +42798,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 262 */
+/* 263 */
 /***/ function(module, exports) {
 
 	/**

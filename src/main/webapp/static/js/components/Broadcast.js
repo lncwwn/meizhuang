@@ -44,7 +44,7 @@ var Broadcast = React.createClass({
 
         var categories = this.state.categories.map(function(category) {
             return (
-                <li><a href="#" className='text-muted'>{category.name}</a></li>
+                <li key={category.id}><a href="#" className='text-muted'>{category.name}</a></li>
             );
         });
 

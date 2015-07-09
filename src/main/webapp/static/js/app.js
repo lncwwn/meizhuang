@@ -19,7 +19,7 @@ var RouteHandler = ReactRouter.RouteHandler;
 var DefaultRoute = ReactRouter.DefaultRoute;
 var Link = ReactRouter.Link;
 var actions = require('./actions/actions');
-var Works = require('./views/works');
+var Work = require('./views/Work');
 var Signup = require('./views/signup');
 var Login = require('./views/login');
 var Update = require('./views/update');
@@ -121,7 +121,7 @@ var routes = (
         <Route name='update' path='/user/update/' handler={Update}></Route>
         <Route name='profile' path='/user/profile/:uid' handler={Profile}></Route>
         <Route name='publish' path='/work/publish' handler={Publish}></Route>
-        <DefaultRoute name='home' handler={Works}></DefaultRoute>
+        <DefaultRoute name='home' handler={Work}></DefaultRoute>
     </Route>
 );
 
