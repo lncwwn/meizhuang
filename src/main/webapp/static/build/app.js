@@ -213,14 +213,14 @@ webpackJsonp([0,1],[
 
 	var Reflux = __webpack_require__(3);
 
-	var actions = Reflux.createActions({
+	var UserAction = Reflux.createActions({
 	    'login': {},
 	    'logout': {},
 	    'signup': {},
 	    'update': {}
 	});
 
-	module.exports = actions;
+	module.exports = UserAction;
 
 
 /***/ },
@@ -42641,26 +42641,61 @@ webpackJsonp([0,1],[
 	var Link = ReactRouter.Link;
 
 	var Publish = React.createClass({displayName: "Publish",
+
+	    limitTitle: function() {
+	        var title = this.refs.name.getDOMNode().value,
+	            limitLength = 30;
+	        if (title && title.length > 0) {
+	            var currentLength = title.length,
+	                restLength = limitLength - currentLength;
+	            this.setState({
+	                restCount: restLength
+	            });
+	        } else {
+	            this.setState({
+	                restCount: limitLength
+	            });
+	        }
+	    },
+
+	    getInitialState: function() {
+	        return ({
+	            restCount: 30
+	        });
+	    },
+
 	    handleSubmit: function() {
 	        // todo
 	    },
+
 	    render: function() {
+	        var restCountComponent = this.state.restCount > 0 ? (
+	            React.createElement("span", null, "剩余", React.createElement("strong", {className: "text-primary"}, this.state.restCount), "个字")
+	        ) : (
+	            React.createElement("span", null, "已超出", React.createElement("strong", {className: "text-danger"}, (-1 * this.state.restCount)), "个字")
+	        );
 	        return (
 	            React.createElement("div", {className: "clearfix"}, 
 	                React.createElement("form", {className: "col-md-offset-3 col-md-6", onSubmit: this.handleSubmit}, 
 	                    React.createElement("h3", null, "发布作品"), 
 	                    React.createElement("div", {className: "form-group"}, 
-	                        React.createElement("input", {type: "text", className: "form-control", ref: "name", name: "name", placeholder: "请输入作品名称", autofocus: "true"})
+	                        React.createElement("div", {className: "input-group"}, 
+	                            React.createElement("input", {type: "text", className: "form-control", ref: "name", name: "name", placeholder: "请输入作品名称，限制30个字", autofocus: "true", onInput: this.limitTitle}), 
+	                            React.createElement("span", {className: "input-group-addon"}, restCountComponent)
+	                        )
 	                    ), 
 	                    React.createElement("div", {className: "form-group"}, 
-	                        React.createElement("textarea", {ref: "description", className: "form-control", rows: "5", placeholder: "请输入作品简介"})
+	                        React.createElement("textarea", {ref: "description", className: "form-control", rows: "5", placeholder: "请输入作品描述，好的描述可以提高作品的排名"})
 	                    ), 
 	                    React.createElement("div", {className: "form-group"}, 
-	                        React.createElement("input", {type: "text", className: "form-control", ref: "price", name: "price", placeholder: "请输入作品价格，可选"})
+	                        React.createElement("div", {className: "input-group"}, 
+	                            React.createElement("input", {type: "text", className: "form-control", ref: "price", name: "price", placeholder: "请输入作品价格，可选，默认为面议"}), 
+	                            React.createElement("span", {className: "input-group-addon"}, "元")
+	                        )
 	                    ), 
 	                    React.createElement("div", {className: "form-group"}, 
-	                        React.createElement("div", {className: "col-md-offset-3 col-md-6"}, 
-	                            React.createElement("button", {className: "btn btn-primary btn-lg col-md-10", type: "submit"}, "发布")
+	                        React.createElement("div", {className: "col-md-offset-10 col-md-2"}, 
+	                            React.createElement("button", {className: "btn btn-info btn-lg col-md-12", type: "submit"}, "确认发布")
 	                        )
 	                    )
 	                )
