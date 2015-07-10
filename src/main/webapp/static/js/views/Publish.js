@@ -55,6 +55,39 @@ var Publish = React.createClass({
                             <span className="input-group-addon">{restCountComponent}</span>
                         </div>
                     </div>
+                    <div className="panel panel-default">
+                        <div className="panel-heading">作品图片预览</div>
+                        <div className="panel-body">
+                            <div class="row">
+                                <div className="col-xs-6 col-md-3">
+                                    <a href="#" className="thumbnail">
+                                        <img src="http://7sbncd.com1.z0.glb.clouddn.com/mzp10576074.jpg" alt="..." />
+                                    </a>
+                                </div>
+                                <div className="col-xs-6 col-md-3">
+                                    <a href="#" className="thumbnail">
+                                        <img src="http://7sbncd.com1.z0.glb.clouddn.com/mzp10576074.jpg" alt="..." />
+                                    </a>
+                                </div>
+                                <div className="col-xs-6 col-md-3">
+                                    <a href="#" className="thumbnail">
+                                        <img src="http://7sbncd.com1.z0.glb.clouddn.com/mzp10576074.jpg" alt="..." />
+                                    </a>
+                                </div>
+                                <div className="col-xs-6 col-md-3">
+                                    <a href="#" className="thumbnail">
+                                        <img src="http://7sbncd.com1.z0.glb.clouddn.com/mzp10576074.jpg" alt="..." />
+                                    </a>
+                                </div>
+                                <div className="col-xs-6 col-md-3">
+                                    <a href="#" className="thumbnail">
+                                        <img src="http://7sbncd.com1.z0.glb.clouddn.com/mzp10576074.jpg" alt="..." />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="panel-footer"><button className="btn btn-default">上传作品图片</button></div>
+                    </div>
                     <div className='form-group'>
                         <textarea ref='description' className='form-control' rows='5' placeholder='请输入作品描述，好的描述可以提高作品的排名'></textarea>
                     </div>

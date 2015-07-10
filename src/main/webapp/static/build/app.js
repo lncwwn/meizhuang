@@ -42866,6 +42866,39 @@ webpackJsonp([0,1],[
 	                            React.createElement("span", {className: "input-group-addon"}, restCountComponent)
 	                        )
 	                    ), 
+	                    React.createElement("div", {className: "panel panel-default"}, 
+	                        React.createElement("div", {className: "panel-heading"}, "作品图片预览"), 
+	                        React.createElement("div", {className: "panel-body"}, 
+	                            React.createElement("div", {class: "row"}, 
+	                                React.createElement("div", {className: "col-xs-6 col-md-3"}, 
+	                                    React.createElement("a", {href: "#", className: "thumbnail"}, 
+	                                        React.createElement("img", {src: "http://7sbncd.com1.z0.glb.clouddn.com/mzp10576074.jpg", alt: "..."})
+	                                    )
+	                                ), 
+	                                React.createElement("div", {className: "col-xs-6 col-md-3"}, 
+	                                    React.createElement("a", {href: "#", className: "thumbnail"}, 
+	                                        React.createElement("img", {src: "http://7sbncd.com1.z0.glb.clouddn.com/mzp10576074.jpg", alt: "..."})
+	                                    )
+	                                ), 
+	                                React.createElement("div", {className: "col-xs-6 col-md-3"}, 
+	                                    React.createElement("a", {href: "#", className: "thumbnail"}, 
+	                                        React.createElement("img", {src: "http://7sbncd.com1.z0.glb.clouddn.com/mzp10576074.jpg", alt: "..."})
+	                                    )
+	                                ), 
+	                                React.createElement("div", {className: "col-xs-6 col-md-3"}, 
+	                                    React.createElement("a", {href: "#", className: "thumbnail"}, 
+	                                        React.createElement("img", {src: "http://7sbncd.com1.z0.glb.clouddn.com/mzp10576074.jpg", alt: "..."})
+	                                    )
+	                                ), 
+	                                React.createElement("div", {className: "col-xs-6 col-md-3"}, 
+	                                    React.createElement("a", {href: "#", className: "thumbnail"}, 
+	                                        React.createElement("img", {src: "http://7sbncd.com1.z0.glb.clouddn.com/mzp10576074.jpg", alt: "..."})
+	                                    )
+	                                )
+	                            )
+	                        ), 
+	                        React.createElement("div", {className: "panel-footer"}, React.createElement("button", {className: "btn btn-default"}, "上传作品图片"))
+	                    ), 
 	                    React.createElement("div", {className: "form-group"}, 
 	                        React.createElement("textarea", {ref: "description", className: "form-control", rows: "5", placeholder: "请输入作品描述，好的描述可以提高作品的排名"})
 	                    ), 
