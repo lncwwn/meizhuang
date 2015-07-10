@@ -38029,7 +38029,7 @@ webpackJsonp([0,1],[
 	            React.createElement("ul", {className: "list-inline search-area"}, 
 	                React.createElement("li", null, 
 	                    React.createElement("input", {type: "text", className: "form-control", placeholder: "搜索词，如：山水盆景", 
-	                    onClick: this.expandSearch, onBlur: this.resetSearch})
+	                    onFocus: this.expandSearch, onBlur: this.resetSearch})
 	                ), 
 	                React.createElement("li", null, 
 	                    React.createElement("button", {type: "button", className: "btn btn-info"}, "搜索")
