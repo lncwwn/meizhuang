@@ -1,5 +1,6 @@
 /**
- * signup
+ * Signup view
+ *
  * @author victor li
  * @date 2015/06/24
  */

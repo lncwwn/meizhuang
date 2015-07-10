@@ -1,10 +1,17 @@
+/**
+ * User store
+ *
+ * @author victor li
+ * @date 2015/07/09
+ */
+
 'use strict';
 
 var Reflux = require('reflux');
 var UserAction = require('../actions/UserAction');
 
 // default state
-var userInSession = sessionStorage.getItem('currentUser');
+var userInSession = localStorage.getItem('currentUser');
 if (userInSession) {
     userInSession = JSON.parse(userInSession);
 }
@@ -36,7 +43,7 @@ var UserStore = Reflux.createStore({
         this.user.profile.nick = profile.nick;
         this.user.profile.name = profile.name;
         this.user.profile.email = profile.email;
-        sessionStorage.setItem('currentUser', JSON.stringify(this.user));
+        localStorage.setItem('currentUser', JSON.stringify(this.user));
         this.trigger(this.user);
     },
     afterLogout: function() {

@@ -1,5 +1,5 @@
 /**
- * Login
+ * Login view
  *
  * @author victor li
  * @date 2015/06/22

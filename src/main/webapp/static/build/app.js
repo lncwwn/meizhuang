@@ -45,7 +45,6 @@ webpackJsonp([0,1],[
 	    },
 
 	    render: function() {
-
 	        return (
 	            React.createElement("div", null, 
 	                React.createElement(Header, null), 
@@ -37858,6 +37857,13 @@ webpackJsonp([0,1],[
 /* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/**
+	 * User action
+	 *
+	 * @author victor li
+	 * @date 2015/07/09
+	 */
+
 	'use strict';
 
 	var Reflux = __webpack_require__(171);
@@ -38042,7 +38048,8 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * signup
+	 * Signup view
+	 *
 	 * @author victor li
 	 * @date 2015/06/24
 	 */
@@ -38096,7 +38103,7 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
-	 * Login
+	 * Login view
 	 *
 	 * @author victor li
 	 * @date 2015/06/22
@@ -38166,13 +38173,20 @@ webpackJsonp([0,1],[
 /* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/**
+	 * User store
+	 *
+	 * @author victor li
+	 * @date 2015/07/09
+	 */
+
 	'use strict';
 
 	var Reflux = __webpack_require__(171);
 	var UserAction = __webpack_require__(232);
 
 	// default state
-	var userInSession = sessionStorage.getItem('currentUser');
+	var userInSession = localStorage.getItem('currentUser');
 	if (userInSession) {
 	    userInSession = JSON.parse(userInSession);
 	}
@@ -38204,7 +38218,7 @@ webpackJsonp([0,1],[
 	        this.user.profile.nick = profile.nick;
 	        this.user.profile.name = profile.name;
 	        this.user.profile.email = profile.email;
-	        sessionStorage.setItem('currentUser', JSON.stringify(this.user));
+	        localStorage.setItem('currentUser', JSON.stringify(this.user));
 	        this.trigger(this.user);
 	    },
 	    afterLogout: function() {
@@ -42769,6 +42783,7 @@ webpackJsonp([0,1],[
 	});
 
 	module.exports = Update;
+
 
 /***/ },
 /* 262 */
