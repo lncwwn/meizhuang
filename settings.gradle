@@ -3,4 +3,6 @@ include 'mz-cloud'
 findProject(':mz-cloud')?.name = 'cloud'
 include 'mz-assistant'
 include 'mz-api'
+include 'mz-web'
+include 'mz-core'
 
