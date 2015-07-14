@@ -11,9 +11,6 @@
             http://www.springframework.org/schema/mvc
             http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-    <context:component-scan base-package="com.lncwwn.meizhuang.core" />
-    <mvc:annotation-driven />
-
-    <import resource="spring-db.xml"></import>
+   <bean id="userService" class="com.lncwwn.meizhuang.core.service.impl.UserService" />
 
 </beans>

@@ -45,5 +45,7 @@
         <property name="suffix" value=".ftl"></property>
         <property name="contentType" value="text/html;charset=UTF-8"></property>
     </bean>
+    
+    <import resource="classpath:/com/lncwwn/meizhuang/core/config/beans.xml"></import>
 
 </beans>

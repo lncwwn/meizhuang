@@ -2,14 +2,13 @@ group 'com.lncwwn'
 version '1.0.0'
 
 apply plugin: 'idea'
-apply plugin: 'war'
 
 subprojects {
-    sourceCompatibility = 1.7
-    targetCompatibility = 1.7
 
     apply plugin: 'java'
-    apply plugin: 'jetty'
+
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
 
     tasks.withType(JavaCompile) {
         options.encoding = "UTF8"
