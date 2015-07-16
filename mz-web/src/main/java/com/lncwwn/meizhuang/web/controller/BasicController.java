@@ -1,6 +1,6 @@
 package com.lncwwn.meizhuang.web.controller;
 
-import com.lncwwn.meizhuang.core.pojo.User;
+import com.lncwwn.meizhuang.basic.pojo.User;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 

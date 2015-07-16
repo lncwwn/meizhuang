@@ -1,8 +1,8 @@
 package com.lncwwn.meizhuang.core.service.impl;
 
-import com.lncwwn.meizhuang.core.dao.CategoryDao;
-import com.lncwwn.meizhuang.core.pojo.Category;
+import com.lncwwn.meizhuang.basic.pojo.Category;
 import com.lncwwn.meizhuang.core.service.ICategoryService;
+import com.lncwwn.meizhuang.db.dao.CategoryDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

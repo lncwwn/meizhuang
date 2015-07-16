@@ -5,4 +5,6 @@ include 'mz-assistant'
 include 'mz-api'
 include 'mz-web'
 include 'mz-core'
+include 'mz-db'
+include 'mz-basic'
 

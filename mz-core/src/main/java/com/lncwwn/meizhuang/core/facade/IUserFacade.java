@@ -1,6 +1,6 @@
 package com.lncwwn.meizhuang.core.facade;
 
-import com.lncwwn.meizhuang.core.pojo.User;
+import com.lncwwn.meizhuang.basic.pojo.User;
 
 /**
  * Created with idea community version.

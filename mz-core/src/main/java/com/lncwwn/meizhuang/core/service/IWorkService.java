@@ -1,6 +1,6 @@
 package com.lncwwn.meizhuang.core.service;
 
-import com.lncwwn.meizhuang.core.pojo.Work;
+import com.lncwwn.meizhuang.basic.pojo.Work;
 
 import java.util.List;
 

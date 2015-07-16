@@ -9,6 +9,8 @@ jettyRun {
 }
 
 dependencies {
+    compile project(':mz-basic')
+    compile project(':mz-db')
     compile project(':mz-core')
     compile group: 'org.springframework', name: 'spring-core', version: springVersion
     compile group: 'org.springframework', name: 'spring-context', version: springVersion

@@ -1,6 +1,6 @@
 package com.lncwwn.meizhuang.web.controller;
 
-import com.lncwwn.meizhuang.core.pojo.User;
+import com.lncwwn.meizhuang.basic.pojo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
