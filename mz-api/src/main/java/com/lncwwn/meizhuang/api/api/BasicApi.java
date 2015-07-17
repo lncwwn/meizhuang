@@ -1,4 +1,4 @@
-package com.lncwwn.meizhuang.api;
+package com.lncwwn.meizhuang.api.api;
 
 import com.alibaba.fastjson.JSON;
 import com.lncwwn.meizhuang.basic.pojo.User;

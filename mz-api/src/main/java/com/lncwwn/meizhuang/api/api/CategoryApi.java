@@ -1,7 +1,7 @@
-package com.lncwwn.meizhuang.api;
+package com.lncwwn.meizhuang.api.api;
 
+import com.lncwwn.meizhuang.api.service.ICategoryService;
 import com.lncwwn.meizhuang.basic.pojo.Category;
-import com.lncwwn.meizhuang.core.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

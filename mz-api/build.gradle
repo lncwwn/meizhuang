@@ -1,6 +1,12 @@
 group 'com.lncwwn'
 version '1.0.0'
 
+apply plugin: 'jetty'
+
+jettyRun {
+    httpPort 8001
+}
+
 dependencies {
     compile project(':mz-basic')
     compile project(':mz-db')

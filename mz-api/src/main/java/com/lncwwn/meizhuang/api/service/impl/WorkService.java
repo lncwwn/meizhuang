@@ -1,7 +1,7 @@
-package com.lncwwn.meizhuang.core.service.impl;
+package com.lncwwn.meizhuang.api.service.impl;
 
+import com.lncwwn.meizhuang.api.service.IWorkService;
 import com.lncwwn.meizhuang.basic.pojo.Work;
-import com.lncwwn.meizhuang.core.service.IWorkService;
 import com.lncwwn.meizhuang.db.dao.WorkDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

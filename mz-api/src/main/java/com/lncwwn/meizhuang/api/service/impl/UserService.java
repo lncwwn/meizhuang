@@ -1,7 +1,7 @@
-package com.lncwwn.meizhuang.core.service.impl;
+package com.lncwwn.meizhuang.api.service.impl;
 
+import com.lncwwn.meizhuang.api.service.IUserService;
 import com.lncwwn.meizhuang.basic.pojo.User;
-import com.lncwwn.meizhuang.core.service.IUserService;
 import com.lncwwn.meizhuang.db.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

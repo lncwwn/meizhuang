@@ -1,4 +1,4 @@
-package com.lncwwn.meizhuang.core.facade;
+package com.lncwwn.meizhuang.api.facade;
 
 import com.lncwwn.meizhuang.basic.pojo.User;
 

@@ -1,9 +1,9 @@
-package com.lncwwn.meizhuang.api;
+package com.lncwwn.meizhuang.api.api;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.lncwwn.meizhuang.api.facade.impl.UserFacade;
 import com.lncwwn.meizhuang.basic.pojo.User;
-import com.lncwwn.meizhuang.core.facade.impl.UserFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

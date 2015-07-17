@@ -1,4 +1,4 @@
-package com.lncwwn.meizhuang.core.service;
+package com.lncwwn.meizhuang.api.service;
 
 import com.lncwwn.meizhuang.basic.pojo.Work;
 

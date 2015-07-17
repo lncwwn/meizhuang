@@ -1,8 +1,8 @@
-package com.lncwwn.meizhuang.core.facade.impl;
+package com.lncwwn.meizhuang.api.facade.impl;
 
+import com.lncwwn.meizhuang.api.facade.IUserFacade;
+import com.lncwwn.meizhuang.api.service.IUserService;
 import com.lncwwn.meizhuang.basic.pojo.User;
-import com.lncwwn.meizhuang.core.facade.IUserFacade;
-import com.lncwwn.meizhuang.core.service.IUserService;
 import com.lncwwn.meizhuang.core.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
