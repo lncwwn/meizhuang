@@ -28,7 +28,7 @@ var Works = React.createClass({
     },
 
     componentDidMount: function() {
-        $.get(MZ.base + '/work/list?offset=0&limit=100', function(data) {
+        $.get('/mz-api/work/list?offset=0&limit=100', function(data) {
             if (data) {
                 data = JSON.parse(data);
                 data = data.data;

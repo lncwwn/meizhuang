@@ -38271,7 +38271,7 @@ webpackJsonp([0,1],[
 	    },
 
 	    componentDidMount: function() {
-	        $.get(MZ.base + '/work/list?offset=0&limit=100', function(data) {
+	        $.get('/mz-api/work/list?offset=0&limit=100', function(data) {
 	            if (data) {
 	                data = JSON.parse(data);
 	                data = data.data;
@@ -42642,7 +42642,7 @@ webpackJsonp([0,1],[
 	    },
 
 	    componentDidMount: function() {
-	        $.get(MZ.base + '/category/list', function(data) {
+	        $.get('/mz-api/category/list', function(data) {
 	            if (data) {
 	                data = JSON.parse(data);
 	                data = data.data;

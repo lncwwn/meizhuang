@@ -25,7 +25,7 @@ var Broadcast = React.createClass({
     },
 
     componentDidMount: function() {
-        $.get(MZ.base + '/category/list', function(data) {
+        $.get('/mz-api/category/list', function(data) {
             if (data) {
                 data = JSON.parse(data);
                 data = data.data;
