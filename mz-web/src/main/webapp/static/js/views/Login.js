@@ -29,7 +29,7 @@ var Login = React.createClass({
         $.ajaxSetup({
             contentType:"application/x-www-form-urlencoded; charset=UTF-8"
         });
-        $.post(MZ.base + '/user/login', 'params=' + JSON.stringify(params), function(data) {
+        $.post('/mz-api/user/login', 'params=' + JSON.stringify(params), function(data) {
             if (data) {
                 data = JSON.parse(data);
                 if (data.code === 1) {

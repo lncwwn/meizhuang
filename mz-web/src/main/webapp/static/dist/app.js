@@ -38074,7 +38074,7 @@ webpackJsonp([0,1],[
 	            return;
 	        }
 	        var params = {nick: nick, password: password, email: email};
-	        $.post(MZ.base + '/user/signup', 'params=' + JSON.stringify(params), function(data) {
+	        $.post('/mz-api/user/signup', 'params=' + JSON.stringify(params), function(data) {
 	            console.log(data);
 	        });
 	    },
@@ -38133,7 +38133,7 @@ webpackJsonp([0,1],[
 	        $.ajaxSetup({
 	            contentType:"application/x-www-form-urlencoded; charset=UTF-8"
 	        });
-	        $.post(MZ.base + '/user/login', 'params=' + JSON.stringify(params), function(data) {
+	        $.post('/mz-api/user/login', 'params=' + JSON.stringify(params), function(data) {
 	            if (data) {
 	                data = JSON.parse(data);
 	                if (data.code === 1) {

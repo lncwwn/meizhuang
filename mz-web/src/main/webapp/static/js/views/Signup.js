@@ -25,7 +25,7 @@ var Signup = React.createClass({
             return;
         }
         var params = {nick: nick, password: password, email: email};
-        $.post(MZ.base + '/user/signup', 'params=' + JSON.stringify(params), function(data) {
+        $.post('/mz-api/user/signup', 'params=' + JSON.stringify(params), function(data) {
             console.log(data);
         });
     },
