@@ -20,7 +20,8 @@ var UserAction = require('../actions/UserAction');
 var Header = React.createClass({
 
     mixins: [
-        Reflux.listenTo(UserStore, 'updateUser')
+        Reflux.listenTo(UserStore, 'updateUser'),
+        Reflux.listenTo(UserStore, 'userLogout')
     ],
 
     getInitialState: function() {
@@ -30,6 +31,12 @@ var Header = React.createClass({
     },
 
     updateUser: function(user) {
+        this.setState({
+            user: user
+        });
+    },
+
+    userLogout: function(user) {
         this.setState({
             user: user
         });

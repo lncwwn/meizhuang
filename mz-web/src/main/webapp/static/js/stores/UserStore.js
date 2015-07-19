@@ -34,9 +34,11 @@ var UserStore = Reflux.createStore({
         this.listenTo(UserAction.login, this.afterLogin),
         this.listenTo(UserAction.logout, this.afterLogout)
     },
+
     afterSignup: function() {
         // TODO
     },
+
     afterLogin: function(profile) {
         this.user.isLoggedIn = true;
         this.user.profile.id = profile.id;
@@ -46,17 +48,21 @@ var UserStore = Reflux.createStore({
         localStorage.setItem('currentUser', JSON.stringify(this.user));
         this.trigger(this.user);
     },
+
     afterLogout: function() {
         this.user = defaultUser;
-        sessionStorage.removeItem('currentUser');
+        localStorage.removeItem('currentUser');
         this.trigger(this.user);
     },
+
     afterUpdate: function() {
         // TODO
     },
+
     getUser: function() {
         return this.user;
     }
+
 });
 
 module.exports = UserStore;

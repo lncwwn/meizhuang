@@ -37904,7 +37904,8 @@ webpackJsonp([0,1],[
 	var Header = React.createClass({displayName: "Header",
 
 	    mixins: [
-	        Reflux.listenTo(UserStore, 'updateUser')
+	        Reflux.listenTo(UserStore, 'updateUser'),
+	        Reflux.listenTo(UserStore, 'userLogout')
 	    ],
 
 	    getInitialState: function() {
@@ -37914,6 +37915,12 @@ webpackJsonp([0,1],[
 	    },
 
 	    updateUser: function(user) {
+	        this.setState({
+	            user: user
+	        });
+	    },
+
+	    userLogout: function(user) {
 	        this.setState({
 	            user: user
 	        });
@@ -38209,9 +38216,11 @@ webpackJsonp([0,1],[
 	        this.listenTo(UserAction.login, this.afterLogin),
 	        this.listenTo(UserAction.logout, this.afterLogout)
 	    },
+
 	    afterSignup: function() {
 	        // TODO
 	    },
+
 	    afterLogin: function(profile) {
 	        this.user.isLoggedIn = true;
 	        this.user.profile.id = profile.id;
@@ -38221,17 +38230,21 @@ webpackJsonp([0,1],[
 	        localStorage.setItem('currentUser', JSON.stringify(this.user));
 	        this.trigger(this.user);
 	    },
+
 	    afterLogout: function() {
 	        this.user = defaultUser;
-	        sessionStorage.removeItem('currentUser');
+	        localStorage.removeItem('currentUser');
 	        this.trigger(this.user);
 	    },
+
 	    afterUpdate: function() {
 	        // TODO
 	    },
+
 	    getUser: function() {
 	        return this.user;
 	    }
+
 	});
 
 	module.exports = UserStore;
