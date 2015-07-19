@@ -22,3 +22,6 @@ hs_err_pid*
 # bower
 bower_components/
 node_modules/
+
+## secret protect
+db.properties
