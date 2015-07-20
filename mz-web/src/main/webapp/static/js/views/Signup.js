@@ -11,6 +11,11 @@ var ReactRouter = require('react-router');
 var Link = ReactRouter.Link;
 
 var Signup = React.createClass({
+
+    mixins: [
+        require('react-router').Navigation
+    ],
+
     handleSubmit: function(e) {
         e.preventDefault();
         var nick = this.refs.nick.getDOMNode().value;
@@ -24,9 +29,15 @@ var Signup = React.createClass({
         if (password !== passwordConfirm) {
             return;
         }
-        var params = {nick: nick, password: password, email: email};
+        var params = {nick: nick, password: password, email: email}, self = this;
         $.post('/mz-api/user/signup', 'params=' + JSON.stringify(params), function(data) {
             console.log(data);
+            if (data) {
+                data = JSON.parse(data);
+                if (data.code === 1 && data.data) {
+                    self.transitionTo('login');
+                }
+            }
         });
     },
     render: function() {

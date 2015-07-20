@@ -38067,6 +38067,11 @@ webpackJsonp([0,1],[
 	var Link = ReactRouter.Link;
 
 	var Signup = React.createClass({displayName: "Signup",
+
+	    mixins: [
+	        __webpack_require__(193).Navigation
+	    ],
+
 	    handleSubmit: function(e) {
 	        e.preventDefault();
 	        var nick = this.refs.nick.getDOMNode().value;
@@ -38080,9 +38085,15 @@ webpackJsonp([0,1],[
 	        if (password !== passwordConfirm) {
 	            return;
 	        }
-	        var params = {nick: nick, password: password, email: email};
+	        var params = {nick: nick, password: password, email: email}, self = this;
 	        $.post('/mz-api/user/signup', 'params=' + JSON.stringify(params), function(data) {
 	            console.log(data);
+	            if (data) {
+	                data = JSON.parse(data);
+	                if (data.code === 1 && data.data) {
+	                    self.transitionTo('login');
+	                }
+	            }
 	        });
 	    },
 	    render: function() {

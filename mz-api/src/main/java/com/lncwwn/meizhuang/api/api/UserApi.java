@@ -29,7 +29,7 @@ public class UserApi extends BasicApi {
      * user register api
      * @return json string
      */
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @RequestMapping(value = "/signup", method = RequestMethod.POST)
     @ResponseBody
     public String register(String params) {
         if (null == params) {
