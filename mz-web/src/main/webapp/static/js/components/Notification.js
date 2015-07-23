@@ -36,14 +36,14 @@ var Notification = React.createClass({
                 break;
             case 'error':
                 notificationComponent = (
-                    <div className="alert alert-error alert-dismissible" role="alert">
+                    <div className="alert alert-danger alert-dismissible" role="alert">
                         {this.props.notification}
                     </div>
                 );
                 break;
             default:
                 notificationComponent = (
-                    <div className="alert alert-error alert-dismissible" role="alert">
+                    <div className="alert alert-danger alert-dismissible" role="alert">
                         {this.props.notification}
                     </div>
                 );
@@ -51,11 +51,11 @@ var Notification = React.createClass({
         }
 
         return this.state.status ? (
-            <div>
+            <div className="col-md-4 col-md-offset-4" style={{position: 'fixed', zIndex: '999', marginTop: '-25px'}}>
                 {notificationComponent}
             </div>
         ) : (
-            <div className="">
+            <div className="hidden col-md-4 col-md-offset-4" style={{position: 'fixed', zIndex: '999', marginTop: '-25px'}}>
                 {notificationComponent}
             </div>
         );

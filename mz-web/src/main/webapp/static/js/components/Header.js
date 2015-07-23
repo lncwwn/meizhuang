@@ -17,17 +17,20 @@ var Login = require('../views/Login');
 var Notification = require('../components/Notification');
 var UserStore = require('../stores/UserStore');
 var UserAction = require('../actions/UserAction');
+var NotificationAction = require('../actions/NotificationAction');
+var NotificationStore = require('../stores/NotificationStore');
 
 var Header = React.createClass({
 
     mixins: [
         Reflux.listenTo(UserStore, 'updateUser'),
-        Reflux.listenTo(UserStore, 'userLogout')
+        Reflux.listenTo(NotificationStore, 'updateNotification')
     ],
 
     getInitialState: function() {
         return {
-            user: UserStore.getUser()
+            user: UserStore.getUser(),
+            notification: NotificationStore.getNotification()
         };
     },
 
@@ -35,11 +38,12 @@ var Header = React.createClass({
         this.setState({
             user: user
         });
+        NotificationAction.updateNotification('kkkkkkkkkkkkkkk');
     },
 
-    userLogout: function(user) {
+    updateNotification: function(notification) {
         this.setState({
-            user: user
+            notification: notification
         });
     },
 
@@ -81,7 +85,7 @@ var Header = React.createClass({
 
         return (
             <div>
-                <Notification notification='ghkjhkhlkhlkj;lj;lkj;ljkjkjkjkjkkkkkkkkkkkkkkkkkkkkkkjkjkj' />
+                <Notification notification={this.state.notification} />
                 <div className='header'>
                     <div className='navbar min-height mz-navbar navbar-fixed-top' role='navigation'>
                         <div className='container-fluid'>
