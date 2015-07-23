@@ -14,6 +14,7 @@ var Link = ReactRouter.Link;
 var Search = require('../components/Search');
 var Signup = require('../views/Signup');
 var Login = require('../views/Login');
+var Notification = require('../components/Notification');
 var UserStore = require('../stores/UserStore');
 var UserAction = require('../actions/UserAction');
 
@@ -79,19 +80,22 @@ var Header = React.createClass({
         );
 
         return (
-            <div className='header'>
-                <div className='navbar min-height mz-navbar navbar-fixed-top' role='navigation'>
-                    <div className='container-fluid'>
-                        <div className='navbar-header'>
-                            <Link to='home'>
-                                <a className='navbar-brand' href='javascript:;'>美桩网</a>
-                            </Link>
-                        </div>
-                        <div className='nav navbar-nav'>
-                            <Search />
-                        </div>
-                        <div className='collapse navbar-collapse'>
-                            {userArea}
+            <div>
+                <Notification notification='ghkjhkhlkhlkj;lj;lkj;ljkjkjkjkjkkkkkkkkkkkkkkkkkkkkkkjkjkj' />
+                <div className='header'>
+                    <div className='navbar min-height mz-navbar navbar-fixed-top' role='navigation'>
+                        <div className='container-fluid'>
+                            <div className='navbar-header'>
+                                <Link to='home'>
+                                    <a className='navbar-brand' href='javascript:;'>美桩网</a>
+                                </Link>
+                            </div>
+                            <div className='nav navbar-nav'>
+                                <Search />
+                            </div>
+                            <div className='collapse navbar-collapse'>
+                                {userArea}
+                            </div>
                         </div>
                     </div>
                 </div>

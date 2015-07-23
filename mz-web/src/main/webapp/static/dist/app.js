@@ -24,15 +24,15 @@ webpackJsonp([0,1],[
 	var Link = ReactRouter.Link;
 	var UserAction = __webpack_require__(232);
 	var Header = __webpack_require__(233);
-	var Work = __webpack_require__(238);
-	var Signup = __webpack_require__(235);
-	var Login = __webpack_require__(236);
-	var Update = __webpack_require__(261);
-	var Profile = __webpack_require__(262);
-	var Publish = __webpack_require__(263);
-	var UserStore = __webpack_require__(237);
-	var Search = __webpack_require__(234);
-	var Footer = __webpack_require__(264);
+	var Work = __webpack_require__(239);
+	var Signup = __webpack_require__(236);
+	var Login = __webpack_require__(234);
+	var Update = __webpack_require__(262);
+	var Profile = __webpack_require__(263);
+	var Publish = __webpack_require__(264);
+	var UserStore = __webpack_require__(238);
+	var Search = __webpack_require__(235);
+	var Footer = __webpack_require__(265);
 
 	var WorksOfArt = React.createClass({displayName: "WorksOfArt",
 
@@ -37895,10 +37895,11 @@ webpackJsonp([0,1],[
 	var ReactRouter = __webpack_require__(193);
 	var Link = ReactRouter.Link;
 
-	var Search = __webpack_require__(234);
-	var Signup = __webpack_require__(235);
-	var Login = __webpack_require__(236);
-	var UserStore = __webpack_require__(237);
+	var Search = __webpack_require__(235);
+	var Signup = __webpack_require__(236);
+	var Login = __webpack_require__(234);
+	var Notification = __webpack_require__(237);
+	var UserStore = __webpack_require__(238);
 	var UserAction = __webpack_require__(232);
 
 	var Header = React.createClass({displayName: "Header",
@@ -37963,19 +37964,22 @@ webpackJsonp([0,1],[
 	        );
 
 	        return (
-	            React.createElement("div", {className: "header"}, 
-	                React.createElement("div", {className: "navbar min-height mz-navbar navbar-fixed-top", role: "navigation"}, 
-	                    React.createElement("div", {className: "container-fluid"}, 
-	                        React.createElement("div", {className: "navbar-header"}, 
-	                            React.createElement(Link, {to: "home"}, 
-	                                React.createElement("a", {className: "navbar-brand", href: "javascript:;"}, "美桩网")
+	            React.createElement("div", null, 
+	                React.createElement(Notification, {notification: "ghkjhkhlkhlkj;lj;lkj;ljkjkjkjkjkkkkkkkkkkkkkkkkkkkkkkjkjkj"}), 
+	                React.createElement("div", {className: "header"}, 
+	                    React.createElement("div", {className: "navbar min-height mz-navbar navbar-fixed-top", role: "navigation"}, 
+	                        React.createElement("div", {className: "container-fluid"}, 
+	                            React.createElement("div", {className: "navbar-header"}, 
+	                                React.createElement(Link, {to: "home"}, 
+	                                    React.createElement("a", {className: "navbar-brand", href: "javascript:;"}, "美桩网")
+	                                )
+	                            ), 
+	                            React.createElement("div", {className: "nav navbar-nav"}, 
+	                                React.createElement(Search, null)
+	                            ), 
+	                            React.createElement("div", {className: "collapse navbar-collapse"}, 
+	                                userArea
 	                            )
-	                        ), 
-	                        React.createElement("div", {className: "nav navbar-nav"}, 
-	                            React.createElement(Search, null)
-	                        ), 
-	                        React.createElement("div", {className: "collapse navbar-collapse"}, 
-	                            userArea
 	                        )
 	                    )
 	                )
@@ -37990,134 +37994,6 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 234 */
-/***/ function(module, exports) {
-
-	/**
-	 * Search component
-	 *
-	 * @author victor li
-	 * @date 2015/07/08
-	 */
-
-	'use strict';
-
-	var Search = React.createClass({displayName: "Search",
-
-	    getInitialState: function() {
-	        return {
-	            expanded: false
-	        };
-	    },
-
-	    expandSearch: function(e) {
-	        if (this.state.expanded) return;
-	        var currentWidthStr = $(e.target).css('width'),
-	            currentWidth = 1 * currentWidthStr.replace('px', ''),
-	            nextWidth = currentWidth * 2;
-	        $(e.target).animate({'width': nextWidth + 'px'});
-	        this.setState({
-	            expanded: true
-	        });
-	    },
-
-	    resetSearch: function(e) {
-	        if (!this.state.expanded) return;
-	        var currentWidthStr = $(e.target).css('width'),
-	            currentWidth = 1 * currentWidthStr.replace('px', ''),
-	            nextWidth = currentWidth / 2;
-	        $(e.target).animate({'width': nextWidth + 'px'});
-	        this.setState({
-	            expanded: false
-	        });
-	    },
-
-	    render: function() {
-	        return (
-	            React.createElement("ul", {className: "list-inline search-area"}, 
-	                React.createElement("li", null, 
-	                    React.createElement("input", {type: "text", className: "form-control", placeholder: "搜索词，如：山水盆景", 
-	                    onFocus: this.expandSearch, onBlur: this.resetSearch})
-	                ), 
-	                React.createElement("li", null, 
-	                    React.createElement("button", {type: "button", className: "btn btn-info"}, "搜索")
-	                )
-	            )
-	        );
-	    }
-	});
-
-	module.exports = Search;
-
-
-
-/***/ },
-/* 235 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Signup view
-	 *
-	 * @author victor li
-	 * @date 2015/06/24
-	 */
-
-	'use strict';
-
-	var ReactRouter = __webpack_require__(193);
-	var Link = ReactRouter.Link;
-
-	var Signup = React.createClass({displayName: "Signup",
-
-	    mixins: [
-	        __webpack_require__(193).Navigation
-	    ],
-
-	    handleSubmit: function(e) {
-	        e.preventDefault();
-	        var nick = this.refs.nick.getDOMNode().value;
-	        var password = this.refs.password.getDOMNode().value;
-	        var passwordConfirm = this.refs.password_confirm.getDOMNode().value;
-	        var email = this.refs.email.getDOMNode().value;
-
-	        if (!nick || !password || !passwordConfirm || !email) {
-	            return;
-	        }
-	        if (password !== passwordConfirm) {
-	            return;
-	        }
-	        var params = {nick: nick, password: password, email: email}, self = this;
-	        $.post('/mz-api/user/signup', 'params=' + JSON.stringify(params), function(data) {
-	            console.log(data);
-	            if (data) {
-	                data = JSON.parse(data);
-	                if (data.code === 1 && data.data) {
-	                    self.transitionTo('login');
-	                }
-	            }
-	        });
-	    },
-	    render: function() {
-	        return (
-	            React.createElement("form", {className: "form-area", onSubmit: this.handleSubmit}, 
-	                React.createElement("h3", null, "用户注册"), 
-	                React.createElement("input", {type: "text", className: "form-control", ref: "nick", name: "nick", placeholder: "用户名", autofocus: "true"}), 
-	                React.createElement("input", {type: "password", className: "form-control", ref: "password", name: "password", placeholder: "密码"}), 
-	                React.createElement("input", {type: "password", className: "form-control", ref: "password_confirm", name: "password_confirm", placeholder: "再次输入密码"}), 
-	                React.createElement("input", {type: "text", className: "form-control", ref: "email", name: "email", placeholder: "邮箱帐号"}), 
-	                React.createElement("button", {className: "btn btn-default btn-primary btn-block js-user-register-btn"}, "注册"), 
-	                React.createElement("div", {className: "form-bottom"}, 
-	                    React.createElement("span", {className: "text-muted"}, "已有账户?"), " ", React.createElement(Link, {to: "login"}, "立即登录")
-	                )
-	            )
-	        );
-	    }
-	});
-
-	module.exports = Signup;
-
-
-/***/ },
-/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -38188,7 +38064,210 @@ webpackJsonp([0,1],[
 
 
 /***/ },
+/* 235 */
+/***/ function(module, exports) {
+
+	/**
+	 * Search component
+	 *
+	 * @author victor li
+	 * @date 2015/07/08
+	 */
+
+	'use strict';
+
+	var Search = React.createClass({displayName: "Search",
+
+	    getInitialState: function() {
+	        return {
+	            expanded: false
+	        };
+	    },
+
+	    expandSearch: function(e) {
+	        if (this.state.expanded) return;
+	        var currentWidthStr = $(e.target).css('width'),
+	            currentWidth = 1 * currentWidthStr.replace('px', ''),
+	            nextWidth = currentWidth * 2;
+	        $(e.target).animate({'width': nextWidth + 'px'});
+	        this.setState({
+	            expanded: true
+	        });
+	    },
+
+	    resetSearch: function(e) {
+	        if (!this.state.expanded) return;
+	        var currentWidthStr = $(e.target).css('width'),
+	            currentWidth = 1 * currentWidthStr.replace('px', ''),
+	            nextWidth = currentWidth / 2;
+	        $(e.target).animate({'width': nextWidth + 'px'});
+	        this.setState({
+	            expanded: false
+	        });
+	    },
+
+	    render: function() {
+	        return (
+	            React.createElement("ul", {className: "list-inline search-area"}, 
+	                React.createElement("li", null, 
+	                    React.createElement("input", {type: "text", className: "form-control", placeholder: "搜索词，如：山水盆景", 
+	                    onFocus: this.expandSearch, onBlur: this.resetSearch})
+	                ), 
+	                React.createElement("li", null, 
+	                    React.createElement("button", {type: "button", className: "btn btn-info"}, "搜索")
+	                )
+	            )
+	        );
+	    }
+	});
+
+	module.exports = Search;
+
+
+
+/***/ },
+/* 236 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Signup view
+	 *
+	 * @author victor li
+	 * @date 2015/06/24
+	 */
+
+	'use strict';
+
+	var ReactRouter = __webpack_require__(193);
+	var Link = ReactRouter.Link;
+
+	var Signup = React.createClass({displayName: "Signup",
+
+	    mixins: [
+	        __webpack_require__(193).Navigation
+	    ],
+
+	    handleSubmit: function(e) {
+	        e.preventDefault();
+	        var nick = this.refs.nick.getDOMNode().value;
+	        var password = this.refs.password.getDOMNode().value;
+	        var passwordConfirm = this.refs.password_confirm.getDOMNode().value;
+	        var email = this.refs.email.getDOMNode().value;
+
+	        if (!nick || !password || !passwordConfirm || !email) {
+	            return;
+	        }
+	        if (password !== passwordConfirm) {
+	            return;
+	        }
+	        var params = {nick: nick, password: password, email: email}, self = this;
+	        $.post('/mz-api/user/signup', 'params=' + JSON.stringify(params), function(data) {
+	            console.log(data);
+	            if (data) {
+	                data = JSON.parse(data);
+	                if (data.code === 1 && data.data) {
+	                    self.transitionTo('login');
+	                }
+	            }
+	        });
+	    },
+	    render: function() {
+	        return (
+	            React.createElement("form", {className: "form-area", onSubmit: this.handleSubmit}, 
+	                React.createElement("h3", null, "用户注册"), 
+	                React.createElement("input", {type: "text", className: "form-control", ref: "nick", name: "nick", placeholder: "用户名", autofocus: "true"}), 
+	                React.createElement("input", {type: "password", className: "form-control", ref: "password", name: "password", placeholder: "密码"}), 
+	                React.createElement("input", {type: "password", className: "form-control", ref: "password_confirm", name: "password_confirm", placeholder: "再次输入密码"}), 
+	                React.createElement("input", {type: "text", className: "form-control", ref: "email", name: "email", placeholder: "邮箱帐号"}), 
+	                React.createElement("button", {className: "btn btn-default btn-primary btn-block js-user-register-btn"}, "注册"), 
+	                React.createElement("div", {className: "form-bottom"}, 
+	                    React.createElement("span", {className: "text-muted"}, "已有账户?"), " ", React.createElement(Link, {to: "login"}, "立即登录")
+	                )
+	            )
+	        );
+	    }
+	});
+
+	module.exports = Signup;
+
+
+/***/ },
 /* 237 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Notification component
+	 *
+	 * @author victor li
+	 * @date 2015/07/21
+	 */
+
+	'use strict';
+
+	var Reflux = __webpack_require__(171);
+
+	var Notification = React.createClass({displayName: "Notification",
+
+	    getInitialState: function() {
+	        return {
+	            status: ''
+	        };
+	    },
+
+	    render: function() {
+	        var notificationComponent;
+	        switch(this.state.status) {
+	            case 'success':
+	                notificationComponent = (
+	                    React.createElement("div", {className: "alert alert-warning alert-dismissible", role: "alert"}, 
+	                        this.props.notification
+	                    )
+	                );
+	                break;
+	            case 'warning':
+	                notificationComponent = (
+	                    React.createElement("div", {className: "alert alert-warning alert-dismissible", role: "alert"}, 
+	                        this.props.notification
+	                    )
+	                );
+	                break;
+	            case 'error':
+	                notificationComponent = (
+	                    React.createElement("div", {className: "alert alert-error alert-dismissible", role: "alert"}, 
+	                        this.props.notification
+	                    )
+	                );
+	                break;
+	            default:
+	                notificationComponent = (
+	                    React.createElement("div", {className: "alert alert-error alert-dismissible", role: "alert"}, 
+	                        this.props.notification
+	                    )
+	                );
+	                break;
+	        }
+
+	        return this.state.status ? (
+	            React.createElement("div", null, 
+	                notificationComponent
+	            )
+	        ) : (
+	            React.createElement("div", {className: ""}, 
+	                notificationComponent
+	            )
+	        );
+	    }
+
+	});
+
+	module.exports = Notification;
+
+
+
+
+
+/***/ },
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -38262,7 +38341,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 238 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -38275,10 +38354,10 @@ webpackJsonp([0,1],[
 
 	var Reflux = __webpack_require__(171);
 
-	var WorkAction = __webpack_require__(239);
-	var WorkStore = __webpack_require__(240);
-	var MasonryMixin = __webpack_require__(241);
-	var Broadcast = __webpack_require__(258);
+	var WorkAction = __webpack_require__(240);
+	var WorkStore = __webpack_require__(241);
+	var MasonryMixin = __webpack_require__(242);
+	var Broadcast = __webpack_require__(259);
 
 	var masonryOptions = {
 	    transitionDuration: 0
@@ -38343,7 +38422,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 239 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -38365,7 +38444,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 240 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -38378,7 +38457,7 @@ webpackJsonp([0,1],[
 	'use strict';
 
 	var Reflux = __webpack_require__(171);
-	var WorkAction = __webpack_require__(239);
+	var WorkAction = __webpack_require__(240);
 
 	var WorkStore = Reflux.createStore({
 
@@ -38397,12 +38476,12 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 241 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isBrowser = (typeof window !== 'undefined');
-	var Masonry = isBrowser ? window.Masonry || __webpack_require__(242) : null;
-	var imagesloaded = isBrowser ? __webpack_require__(255) : null;
+	var Masonry = isBrowser ? window.Masonry || __webpack_require__(243) : null;
+	var imagesloaded = isBrowser ? __webpack_require__(256) : null;
 
 	function MasonryMixin() {
 	    return function(reference, options) {
@@ -38514,7 +38593,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 242 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -38708,8 +38787,8 @@ webpackJsonp([0,1],[
 	// -------------------------- transport -------------------------- //
 	if (true) {
 	  module.exports = masonryDefinition(
-	    __webpack_require__(243),
-	    __webpack_require__(253)
+	    __webpack_require__(244),
+	    __webpack_require__(254)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -38730,7 +38809,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 243 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -39721,12 +39800,12 @@ webpackJsonp([0,1],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerDefinition(
-	    __webpack_require__(247),
-	    __webpack_require__(244),
-	    __webpack_require__(246),
 	    __webpack_require__(248),
-	    __webpack_require__(250),
-	    __webpack_require__(251)
+	    __webpack_require__(245),
+	    __webpack_require__(247),
+	    __webpack_require__(249),
+	    __webpack_require__(251),
+	    __webpack_require__(252)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -39755,7 +39834,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 244 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -39819,7 +39898,7 @@ webpackJsonp([0,1],[
 
 	// transport
 	if ( true ) {
-	  module.exports = defineDocReady( __webpack_require__(245) );
+	  module.exports = defineDocReady( __webpack_require__(246) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
 	  // if RequireJS, then doc is already ready
@@ -39834,7 +39913,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 245 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -39922,7 +40001,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 246 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -40365,7 +40444,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 247 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -40453,7 +40532,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 248 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -40662,7 +40741,7 @@ webpackJsonp([0,1],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(249) );
+	  module.exports = defineGetSize( __webpack_require__(250) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -40675,7 +40754,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 249 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -40736,7 +40815,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 250 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -40849,7 +40928,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 251 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -41359,9 +41438,9 @@ webpackJsonp([0,1],[
 	if (true) {
 	  // CommonJS
 	  module.exports = outlayerItemDefinition(
-	    __webpack_require__(246),
-	    __webpack_require__(248),
-	    __webpack_require__(252)
+	    __webpack_require__(247),
+	    __webpack_require__(249),
+	    __webpack_require__(253)
 	  );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD
@@ -41385,7 +41464,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 252 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -41446,7 +41525,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 253 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -41655,7 +41734,7 @@ webpackJsonp([0,1],[
 	// transport
 	if ( true ) {
 	  // CommonJS for Component
-	  module.exports = defineGetSize( __webpack_require__(254) );
+	  module.exports = defineGetSize( __webpack_require__(255) );
 	} else if ( typeof define === 'function' && define.amd ) {
 	  // AMD for RequireJS
 	  define( [ 'get-style-property/get-style-property' ], defineGetSize );
@@ -41668,7 +41747,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 254 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -41729,7 +41808,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 255 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -41747,8 +41826,8 @@ webpackJsonp([0,1],[
 	    // CommonJS
 	    module.exports = factory(
 	      window,
-	      __webpack_require__(256),
-	      __webpack_require__(257)
+	      __webpack_require__(257),
+	      __webpack_require__(258)
 	    );
 	  } else if ( typeof define === 'function' && define.amd ) {
 	    // AMD
@@ -42070,7 +42149,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 256 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -42548,7 +42627,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 257 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -42636,7 +42715,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 258 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42650,8 +42729,8 @@ webpackJsonp([0,1],[
 
 	var Reflux = __webpack_require__(171);
 
-	var CategoryStore = __webpack_require__(259);
-	var CategoryAction = __webpack_require__(260);
+	var CategoryStore = __webpack_require__(260);
+	var CategoryAction = __webpack_require__(261);
 
 	var Broadcast = React.createClass({displayName: "Broadcast",
 
@@ -42713,7 +42792,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 259 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42727,7 +42806,7 @@ webpackJsonp([0,1],[
 
 	var Reflux = __webpack_require__(171);
 
-	var CategoryAction = __webpack_require__(260);
+	var CategoryAction = __webpack_require__(261);
 
 	var defaultCategories = [];
 
@@ -42753,7 +42832,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 260 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42775,7 +42854,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 261 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42810,7 +42889,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 262 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Profile = React.createClass({displayName: "Profile",
@@ -42830,7 +42909,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 263 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -42975,7 +43054,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 264 */
+/* 265 */
 /***/ function(module, exports) {
 
 	/**

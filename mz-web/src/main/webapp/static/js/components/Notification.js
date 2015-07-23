@@ -23,28 +23,28 @@ var Notification = React.createClass({
             case 'success':
                 notificationComponent = (
                     <div className="alert alert-warning alert-dismissible" role="alert">
-                        this.props.notification
+                        {this.props.notification}
                     </div>
                 );
                 break;
             case 'warning':
                 notificationComponent = (
                     <div className="alert alert-warning alert-dismissible" role="alert">
-                        this.props.notification
+                        {this.props.notification}
                     </div>
                 );
                 break;
             case 'error':
                 notificationComponent = (
                     <div className="alert alert-error alert-dismissible" role="alert">
-                        this.props.notification
+                        {this.props.notification}
                     </div>
                 );
                 break;
             default:
                 notificationComponent = (
                     <div className="alert alert-error alert-dismissible" role="alert">
-                        this.props.notification
+                        {this.props.notification}
                     </div>
                 );
                 break;
@@ -55,11 +55,15 @@ var Notification = React.createClass({
                 {notificationComponent}
             </div>
         ) : (
-            <div className="hidden">
+            <div className="">
                 {notificationComponent}
             </div>
         );
     }
 
 });
+
+module.exports = Notification;
+
+
 
