@@ -25,13 +25,13 @@ webpackJsonp([0,1],[
 	var UserAction = __webpack_require__(232);
 	var Header = __webpack_require__(233);
 	var Work = __webpack_require__(241);
-	var Signup = __webpack_require__(236);
-	var Login = __webpack_require__(237);
+	var Signup = __webpack_require__(238);
+	var Login = __webpack_require__(239);
 	var Update = __webpack_require__(264);
 	var Profile = __webpack_require__(265);
 	var Publish = __webpack_require__(266);
-	var UserStore = __webpack_require__(238);
-	var Search = __webpack_require__(235);
+	var UserStore = __webpack_require__(240);
+	var Search = __webpack_require__(237);
 	var Footer = __webpack_require__(267);
 
 	var WorksOfArt = React.createClass({displayName: "WorksOfArt",
@@ -37895,14 +37895,14 @@ webpackJsonp([0,1],[
 	var ReactRouter = __webpack_require__(193);
 	var Link = ReactRouter.Link;
 
-	var Search = __webpack_require__(235);
-	var Signup = __webpack_require__(236);
-	var Login = __webpack_require__(237);
+	var Search = __webpack_require__(237);
+	var Signup = __webpack_require__(238);
+	var Login = __webpack_require__(239);
 	var Notification = __webpack_require__(234);
-	var UserStore = __webpack_require__(238);
+	var UserStore = __webpack_require__(240);
 	var UserAction = __webpack_require__(232);
-	var NotificationAction = __webpack_require__(239);
-	var NotificationStore = __webpack_require__(240);
+	var NotificationAction = __webpack_require__(236);
+	var NotificationStore = __webpack_require__(235);
 
 	var Header = React.createClass({displayName: "Header",
 
@@ -38011,12 +38011,24 @@ webpackJsonp([0,1],[
 
 	var Reflux = __webpack_require__(171);
 
+	var NotificationStore = __webpack_require__(235);
+
 	var Notification = React.createClass({displayName: "Notification",
+
+	    mixins: [
+	        Reflux.listenTo(NotificationStore, 'updateStatus')
+	    ],
 
 	    getInitialState: function() {
 	        return {
 	            status: ''
 	        };
+	    },
+
+	    updateStatus: function(status) {
+	        this.setState({
+	            status: status
+	        });
 	    },
 
 	    render: function() {
@@ -38068,11 +38080,68 @@ webpackJsonp([0,1],[
 	module.exports = Notification;
 
 
+/***/ },
+/* 235 */
+/***/ function(module, exports, __webpack_require__) {
 
+	/**
+	 * Notification Store
+	 *
+	 * @author victor li
+	 * @date 2015/07/23
+	 */
+
+	var Reflux = __webpack_require__(171);
+
+	var NotificationAction = __webpack_require__(236);
+
+	var defaultNotification;
+
+	var NotificationStore = Reflux.createStore({
+
+	    init: function() {
+	        this.notification = defaultNotification;
+	        this.listenTo(NotificationAction.updateNotification, 'updateNotification');
+	    },
+
+	    updateNotification: function(notification) {
+	        this.notification = notification;
+	        this.trigger(this.notification);
+	    },
+
+	    getNotification: function() {
+	        return this.notification;
+	    }
+
+	});
+
+	module.exports = NotificationStore;
 
 
 /***/ },
-/* 235 */
+/* 236 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Notification action
+	 *
+	 * @author victor
+	 * @date 2015/07/24
+	 */
+
+	'use strict';
+
+	var Reflux = __webpack_require__(171);
+
+	var NotificationAction = Reflux.createActions({
+	    'updateNotification': {}
+	});
+
+	module.exports = NotificationAction;
+
+
+/***/ },
+/* 237 */
 /***/ function(module, exports) {
 
 	/**
@@ -38134,7 +38203,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 236 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -38200,7 +38269,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 237 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -38271,7 +38340,7 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 238 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -38342,66 +38411,6 @@ webpackJsonp([0,1],[
 	});
 
 	module.exports = UserStore;
-
-
-/***/ },
-/* 239 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Notification action
-	 *
-	 * @author victor
-	 * @date 2015/07/24
-	 */
-
-	'use strict';
-
-	var Reflux = __webpack_require__(171);
-
-	var NotificationAction = Reflux.createActions({
-	    'updateNotification': {}
-	});
-
-	module.exports = NotificationAction;
-
-
-/***/ },
-/* 240 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Notification Store
-	 *
-	 * @author victor li
-	 * @date 2015/07/23
-	 */
-
-	var Reflux = __webpack_require__(171);
-
-	var NotificationAction = __webpack_require__(239);
-
-	var defaultNotification;
-
-	var NotificationStore = Reflux.createStore({
-
-	    init: function() {
-	        this.notification = defaultNotification;
-	        this.listenTo(NotificationAction.updateNotification, 'updateNotification');
-	    },
-
-	    updateNotification: function(notification) {
-	        this.notification = notification;
-	        this.trigger(this.notification);
-	    },
-
-	    getNotification: function() {
-	        return this.notification;
-	    }
-
-	});
-
-	module.exports = NotificationStore;
 
 
 /***/ },

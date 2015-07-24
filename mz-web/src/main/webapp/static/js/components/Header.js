@@ -38,6 +38,10 @@ var Header = React.createClass({
         this.setState({
             user: user
         });
+        var notification = {status: false, msg: ''};
+        if (typeof user.id !== 'undefined') {
+            notification.status
+        }
         NotificationAction.updateNotification('kkkkkkkkkkkkkkk');
     },
 
